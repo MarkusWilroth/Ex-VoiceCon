@@ -8,10 +8,11 @@
         Title="VCT" Height="450" Width="800">
     <Grid>
         <Label x:Name="LblTitle" Content="Voice Controller Tool" Margin="197,10,204,0" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="40" FontWeight="Bold"/>
-        <Button x:Name="BtnAdd" Content="Add" HorizontalAlignment="Left" Margin="32,83,0,0" VerticalAlignment="Top" Width="76" FontFamily="Times New Roman" FontSize="30"/>
-        <Button x:Name="BtnAdd_Copy" Content="Test" HorizontalAlignment="Left" Margin="125,83,0,0" VerticalAlignment="Top" Width="76" FontFamily="Times New Roman" FontSize="30"/>
+        <Button x:Name="BtnAdd" Content="Add" HorizontalAlignment="Left" Margin="32,83,0,0" VerticalAlignment="Top" Width="76" FontFamily="Times New Roman" FontSize="30" Click="BtnAdd_Click"/>
         <ScrollBar x:Name="ScbMain" HorizontalAlignment="Left" Margin="10,112,0,0" VerticalAlignment="Top" Height="282"/>
         <ComboBox HorizontalAlignment="Left" Margin="32,126,0,0" VerticalAlignment="Top" Width="750" Height="283"/>
+        <Button x:Name="BtnTest" Content="Test" HorizontalAlignment="Left" Margin="130,83,0,0" VerticalAlignment="Top" Width="75" Height="38" FontFamily="Times New Roman" FontSize="30"/>
+        <TextBox x:Name="TbSearch" HorizontalAlignment="Left" Height="38" Margin="453,83,0,0" TextWrapping="Wrap" Text="Search" VerticalAlignment="Top" Width="329" FontFamily="Times New Roman" FontSize="20" FontStyle="Italic"/>
 
     </Grid>
 </Window>

@@ -10,20 +10,15 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace VoiceControllerTool {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for AddWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window {
-        public MainWindow() {
+    public partial class AddWindow : Window {
+        public AddWindow() {
             InitializeComponent();
-        }
-
-        private void BtnAdd_Click(object sender, RoutedEventArgs e) {
-
         }
     }
 }
