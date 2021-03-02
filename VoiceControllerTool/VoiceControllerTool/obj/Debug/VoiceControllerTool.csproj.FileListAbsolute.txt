@@ -1,0 +1,15 @@
+C:\Users\Flugan\Ex-VoiceCon\VoiceControllerTool\VoiceControllerTool\bin\Debug\VoiceControllerTool.exe.config
+C:\Users\Flugan\Ex-VoiceCon\VoiceControllerTool\VoiceControllerTool\bin\Debug\VoiceControllerTool.exe
+C:\Users\Flugan\Ex-VoiceCon\VoiceControllerTool\VoiceControllerTool\bin\Debug\VoiceControllerTool.pdb
+C:\Users\Flugan\Ex-VoiceCon\VoiceControllerTool\VoiceControllerTool\obj\Debug\VoiceControllerTool.csprojAssemblyReference.cache
+C:\Users\Flugan\Ex-VoiceCon\VoiceControllerTool\VoiceControllerTool\obj\Debug\MainWindow.g.cs
+C:\Users\Flugan\Ex-VoiceCon\VoiceControllerTool\VoiceControllerTool\obj\Debug\App.g.cs
+C:\Users\Flugan\Ex-VoiceCon\VoiceControllerTool\VoiceControllerTool\obj\Debug\VoiceControllerTool_MarkupCompile.cache
+C:\Users\Flugan\Ex-VoiceCon\VoiceControllerTool\VoiceControllerTool\obj\Debug\VoiceControllerTool_MarkupCompile.lref
+C:\Users\Flugan\Ex-VoiceCon\VoiceControllerTool\VoiceControllerTool\obj\Debug\MainWindow.baml
+C:\Users\Flugan\Ex-VoiceCon\VoiceControllerTool\VoiceControllerTool\obj\Debug\VoiceControllerTool.g.resources
+C:\Users\Flugan\Ex-VoiceCon\VoiceControllerTool\VoiceControllerTool\obj\Debug\VoiceControllerTool.Properties.Resources.resources
+C:\Users\Flugan\Ex-VoiceCon\VoiceControllerTool\VoiceControllerTool\obj\Debug\VoiceControllerTool.csproj.GenerateResource.cache
+C:\Users\Flugan\Ex-VoiceCon\VoiceControllerTool\VoiceControllerTool\obj\Debug\VoiceControllerTool.csproj.CoreCompileInputs.cache
+C:\Users\Flugan\Ex-VoiceCon\VoiceControllerTool\VoiceControllerTool\obj\Debug\VoiceControllerTool.exe
+C:\Users\Flugan\Ex-VoiceCon\VoiceControllerTool\VoiceControllerTool\obj\Debug\VoiceControllerTool.pdb

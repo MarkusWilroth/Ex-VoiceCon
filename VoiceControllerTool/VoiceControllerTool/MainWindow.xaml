@@ -1,0 +1,17 @@
+﻿<Window x:Name="Main" x:Class="VoiceControllerTool.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VoiceControllerTool"
+        mc:Ignorable="d"
+        Title="VCT" Height="450" Width="800">
+    <Grid>
+        <Label x:Name="LblTitle" Content="Voice Controller Tool" Margin="197,10,204,0" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="40" FontWeight="Bold"/>
+        <Button x:Name="BtnAdd" Content="Add" HorizontalAlignment="Left" Margin="32,83,0,0" VerticalAlignment="Top" Width="76" FontFamily="Times New Roman" FontSize="30"/>
+        <Button x:Name="BtnAdd_Copy" Content="Test" HorizontalAlignment="Left" Margin="125,83,0,0" VerticalAlignment="Top" Width="76" FontFamily="Times New Roman" FontSize="30"/>
+        <ScrollBar x:Name="ScbMain" HorizontalAlignment="Left" Margin="10,112,0,0" VerticalAlignment="Top" Height="282"/>
+        <ComboBox HorizontalAlignment="Left" Margin="32,126,0,0" VerticalAlignment="Top" Width="750" Height="283"/>
+
+    </Grid>
+</Window>
