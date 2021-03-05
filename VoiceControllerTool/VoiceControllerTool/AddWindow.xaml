@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="AddWindow" Height="450" Width="800">
     <Grid>
-        
+        <Label Content="Add Phrase" Margin="290,29,291,0" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="40" FontWeight="Bold"/>
+        <Button x:Name="BtnRecord" Content="Start Record" Margin="335,100,335,0" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="20" Height="35"/>
+        <TextBox x:Name="TbName" HorizontalAlignment="Left" Height="44" Margin="277,140,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="237"/>
+
     </Grid>
 </Window>

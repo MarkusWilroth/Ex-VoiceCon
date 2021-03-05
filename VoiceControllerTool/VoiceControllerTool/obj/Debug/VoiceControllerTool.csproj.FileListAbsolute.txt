@@ -13,3 +13,7 @@ C:\Users\Flugan\Ex-VoiceCon\VoiceControllerTool\VoiceControllerTool\obj\Debug\Vo
 C:\Users\Flugan\Ex-VoiceCon\VoiceControllerTool\VoiceControllerTool\obj\Debug\VoiceControllerTool.csproj.CoreCompileInputs.cache
 C:\Users\Flugan\Ex-VoiceCon\VoiceControllerTool\VoiceControllerTool\obj\Debug\VoiceControllerTool.exe
 C:\Users\Flugan\Ex-VoiceCon\VoiceControllerTool\VoiceControllerTool\obj\Debug\VoiceControllerTool.pdb
+C:\Users\Flugan\Ex-VoiceCon\VoiceControllerTool\VoiceControllerTool\obj\Debug\AddWindow.g.cs
+C:\Users\Flugan\Ex-VoiceCon\VoiceControllerTool\VoiceControllerTool\obj\Debug\TestWindow.g.cs
+C:\Users\Flugan\Ex-VoiceCon\VoiceControllerTool\VoiceControllerTool\obj\Debug\AddWindow.baml
+C:\Users\Flugan\Ex-VoiceCon\VoiceControllerTool\VoiceControllerTool\obj\Debug\TestWindow.baml
