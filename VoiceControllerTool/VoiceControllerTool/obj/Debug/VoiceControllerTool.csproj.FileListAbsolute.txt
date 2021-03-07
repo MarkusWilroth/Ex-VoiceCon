@@ -17,3 +17,6 @@ C:\Users\Flugan\Ex-VoiceCon\VoiceControllerTool\VoiceControllerTool\obj\Debug\Ad
 C:\Users\Flugan\Ex-VoiceCon\VoiceControllerTool\VoiceControllerTool\obj\Debug\TestWindow.g.cs
 C:\Users\Flugan\Ex-VoiceCon\VoiceControllerTool\VoiceControllerTool\obj\Debug\AddWindow.baml
 C:\Users\Flugan\Ex-VoiceCon\VoiceControllerTool\VoiceControllerTool\obj\Debug\TestWindow.baml
+C:\Users\Flugan\Ex-VoiceCon\VoiceControllerTool\VoiceControllerTool\bin\Debug\VCTUtility.dll
+C:\Users\Flugan\Ex-VoiceCon\VoiceControllerTool\VoiceControllerTool\bin\Debug\VCTUtility.pdb
+C:\Users\Flugan\Ex-VoiceCon\VoiceControllerTool\VoiceControllerTool\obj\Debug\VoiceControllerTool.csproj.CopyComplete

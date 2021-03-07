@@ -1,0 +1,6 @@
+C:\Users\Flugan\Ex-VoiceCon\VCTUtility\VCTUtility\bin\Debug\VCTUtility.dll
+C:\Users\Flugan\Ex-VoiceCon\VCTUtility\VCTUtility\bin\Debug\VCTUtility.pdb
+C:\Users\Flugan\Ex-VoiceCon\VCTUtility\VCTUtility\obj\Debug\VCTUtility.csprojAssemblyReference.cache
+C:\Users\Flugan\Ex-VoiceCon\VCTUtility\VCTUtility\obj\Debug\VCTUtility.csproj.CoreCompileInputs.cache
+C:\Users\Flugan\Ex-VoiceCon\VCTUtility\VCTUtility\obj\Debug\VCTUtility.dll
+C:\Users\Flugan\Ex-VoiceCon\VCTUtility\VCTUtility\obj\Debug\VCTUtility.pdb

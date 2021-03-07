@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Win32;
+using VCTUtility;
 
 namespace VoiceControllerTool {
     /// <summary>
@@ -25,7 +26,7 @@ namespace VoiceControllerTool {
             InitializeComponent();
             voiceDataList = new List<VoiceData>();
             //Test();
-            //Load();
+            Load();
         }
 
         private void Test() {
@@ -40,7 +41,7 @@ namespace VoiceControllerTool {
             if (sfd.ShowDialog() == true) {
                 path = sfd.FileName;
             }
-            SaveSystem.SaveVoice(voiceDataList, path);
+            SaveSystem.Save(path, voiceDataList);
         }
 
         private void Load() {

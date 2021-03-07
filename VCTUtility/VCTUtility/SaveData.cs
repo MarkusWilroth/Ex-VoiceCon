@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VoiceControllerTool {
+namespace VCTUtility {
     [Serializable]
-    class SaveData {
+    public class SaveData {
         public List<VoiceData> voiceDataList;
 
         public SaveData(List<VoiceData> voiceList) {

@@ -1,18 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace VoiceControllerTool {
-    static class SaveSystem {
+namespace VCTUtility
+{
+    public static class SaveSystem {
 
-        //private SaveData saveData;
-        //string path;
-
-        public static void SaveVoice(List<VoiceData> voiceList, string path) { //Sparar voiceData
+        public static void Save(string path, List<VoiceData> voiceList) {
             SaveData saveData = new SaveData(voiceList);
 
             if (path != null) {
@@ -23,7 +21,7 @@ namespace VoiceControllerTool {
             }
         }
 
-        public static SaveData Load(string path) { //Öppnar en fil
+        public static SaveData Load(string path) {
             SaveData saveData = null;
 
             if (File.Exists(path)) {

@@ -4,15 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VoiceControllerTool {
+namespace VCTUtility {
     [Serializable]
-    class VoiceData {
-
+    public class VoiceData {
         public string voiceTitle, voiceText;
-        
+
         public VoiceData(string voiceTitle, string voiceText) {
             this.voiceTitle = voiceTitle;
             this.voiceText = voiceText;
         }
     }
+    /* ToDo:
+     * - Fylla denna med relevant data som behövs
+     */ 
 }
