@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "+GQzbKcbTCHXvY0t0+hqqzU6XDjjjtLFDDr+ISRMWQ5xkbyjG7CeTrW/yG2hlfE5Nb9zaw5TWntD7e++Iwb/+A==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\jasmi\\OneDrive\\Desktop\\VoskEngine\\VoskEngine\\VoskEngine.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\jasmi\\.nuget\\packages\\mathnet.numerics\\4.15.0\\mathnet.numerics.4.15.0.nupkg.sha512",
+    "C:\\Users\\jasmi\\.nuget\\packages\\vosk\\0.3.21\\vosk.0.3.21.nupkg.sha512"
+  ],
+  "logs": []
+}
