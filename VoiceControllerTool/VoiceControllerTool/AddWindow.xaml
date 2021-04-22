@@ -5,11 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VoiceControllerTool"
         mc:Ignorable="d"
-        Title="AddWindow" Height="450" Width="800">
+        Title="AddWindow" Height="260" Width="392">
     <Grid>
-        <Label Content="Add Phrase" Margin="290,29,291,0" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="40" FontWeight="Bold"/>
-        <Button x:Name="BtnRecord" Content="Start Record" Margin="335,100,335,0" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="20" Height="35"/>
-        <TextBox x:Name="TbName" HorizontalAlignment="Left" Height="44" Margin="277,140,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="237"/>
+        <Label Content="Add Phrase" Margin="85,-160,85,0" VerticalAlignment="Center" FontFamily="Times New Roman" FontSize="40" FontWeight="Bold"/>
+        <Button x:Name="BtnRecord" Content="Start Record" Margin="135,60,135,0" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="20" Height="35" Click="BtnRecord_Click" />
+        <TextBox x:Name="TbTitle" HorizontalAlignment="Left" Height="20" Margin="59,105,0,0" TextWrapping="Wrap" Text="Title" VerticalAlignment="Top" Width="308"/>
+        <Label Content="Title:" Margin="12,100,325,0" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="15" FontWeight="Bold" RenderTransformOrigin="0.495,0.556"/>
+        <TextBox x:Name="TbText" HorizontalAlignment="Left" Height="20" Margin="59,130,0,0" TextWrapping="Wrap" Text="Text" VerticalAlignment="Top" Width="308"/>
+        <TextBox x:Name="TbTag" HorizontalAlignment="Left" Height="20" Margin="59,155,0,0" TextWrapping="Wrap" Text="Tag" VerticalAlignment="Top" Width="308"/>
+        <Button x:Name="BtnReturn" Content="Return" Margin="95,185,95,0" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="20" Height="30" Click="BtnReturn_Click"/>
+        <Label Content="Text:" Margin="12,127,330,0" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="15" FontWeight="Bold" Height="29"/>
+        <Label Content="Tag:" Margin="10,150,332,0" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="15" FontWeight="Bold" Height="29"/>
 
     </Grid>
 </Window>
