@@ -1,0 +1,79 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Flugan\\Ex-VoiceCon\\VCT\\VCT\\VCT\\VCT.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Flugan\\Ex-VoiceCon\\VCT\\VCT\\VCT\\VCT.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Flugan\\Ex-VoiceCon\\VCT\\VCT\\VCT\\VCT.csproj",
+        "projectName": "VCT",
+        "projectPath": "C:\\Users\\Flugan\\Ex-VoiceCon\\VCT\\VCT\\VCT\\VCT.csproj",
+        "packagesPath": "C:\\Users\\Flugan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Flugan\\Ex-VoiceCon\\VCT\\VCT\\VCT\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Flugan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "NAudio": {
+              "target": "Package",
+              "version": "[2.0.0, )"
+            },
+            "Vosk": {
+              "target": "Package",
+              "version": "[0.3.21, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WindowsForms": {
+              "privateAssets": "none"
+            },
+            "Microsoft.WindowsDesktop.App.WPF": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.408\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
