@@ -1,0 +1,57 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="SmallComBox.png" />
+    <None Remove="VCT-CommandBox.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NAudio" Version="2.0.0" />
+    <PackageReference Include="Vosk" Version="0.3.21" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="VCTUtility">
+      <HintPath>..\..\VCTUtility\VCTUtility\bin\Debug\netstandard2.0\VCTUtility.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="SmallComBox.png" />
+    <Resource Include="Sprites\SmallComBox.png" />
+    <Resource Include="Sprites\VCT-CommandBox.png" />
+    <Resource Include="VCT-CommandBox.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Other\" />
+    <Folder Include="Windows\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Include="App.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="C:\Users\Flugan\.nuget\packages\vosk\0.3.21\build\lib\win-x64\libvosk.dll" Link="Other\libvosk.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="C:\Users\Flugan\.nuget\packages\vosk\0.3.21\build\lib\win-x64\libgcc_s_seh-1.dll" Link="Other\libgcc_s_seh-1.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="C:\Users\Flugan\.nuget\packages\vosk\0.3.21\build\lib\win-x64\libstdc++-6.dll" Link="Other\libstdc++-6.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="C:\Users\Flugan\.nuget\packages\vosk\0.3.21\build\lib\win-x64\libwinpthread-1.dll" Link="Other\libwinpthread-1.dll" />
+  </ItemGroup>
+
+</Project>
