@@ -93,7 +93,7 @@ namespace VCT {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/VCT;V1.0.0.0;component/windows/addwindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/VCT;component/windows/addwindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Windows\AddWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

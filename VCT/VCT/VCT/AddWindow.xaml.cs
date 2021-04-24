@@ -42,7 +42,7 @@ namespace VCT {
 
         private bool SaveRecording() {
             title = TbTitle.Text;
-            text = TbTitle.Text;
+            text = TbText.Text;
             tag = TbTag.Text;
 
             if (VarifySave()) { //Kollar ifall det går att spara

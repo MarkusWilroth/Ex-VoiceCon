@@ -1,5 +1,4 @@
 C:\Users\Flugan\Ex-VoiceCon\VCT\VCT\VCT\obj\Debug\netcoreapp3.1\VCT.csprojAssemblyReference.cache
-C:\Users\Flugan\Ex-VoiceCon\VCT\VCT\VCT\obj\Debug\netcoreapp3.1\MainWindow.g.cs
 C:\Users\Flugan\Ex-VoiceCon\VCT\VCT\VCT\obj\Debug\netcoreapp3.1\App.g.cs
 C:\Users\Flugan\Ex-VoiceCon\VCT\VCT\VCT\obj\Debug\netcoreapp3.1\VCT_MarkupCompile.cache
 C:\Users\Flugan\Ex-VoiceCon\VCT\VCT\VCT\obj\Debug\netcoreapp3.1\VCT_MarkupCompile.lref
@@ -23,9 +22,6 @@ C:\Users\Flugan\Ex-VoiceCon\VCT\VCT\VCT\bin\Debug\netcoreapp3.1\NAudio.WinMM.dll
 C:\Users\Flugan\Ex-VoiceCon\VCT\VCT\VCT\bin\Debug\netcoreapp3.1\Vosk.dll
 C:\Users\Flugan\Ex-VoiceCon\VCT\VCT\VCT\bin\Debug\netcoreapp3.1\VCTUtility.dll
 C:\Users\Flugan\Ex-VoiceCon\VCT\VCT\VCT\bin\Debug\netcoreapp3.1\VCTUtility.pdb
-C:\Users\Flugan\Ex-VoiceCon\VCT\VCT\VCT\obj\Debug\netcoreapp3.1\AddWindow.g.cs
-C:\Users\Flugan\Ex-VoiceCon\VCT\VCT\VCT\obj\Debug\netcoreapp3.1\AddWindow.baml
-C:\Users\Flugan\Ex-VoiceCon\VCT\VCT\VCT\obj\Debug\netcoreapp3.1\MainWindow.baml
 C:\Users\Flugan\Ex-VoiceCon\VCT\VCT\VCT\obj\Debug\netcoreapp3.1\VCT.g.resources
 C:\Users\Flugan\Ex-VoiceCon\VCT\VCT\VCT\obj\Debug\netcoreapp3.1\VCT.AssemblyInfoInputs.cache
 C:\Users\Flugan\Ex-VoiceCon\VCT\VCT\VCT\obj\Debug\netcoreapp3.1\VCT.AssemblyInfo.cs
@@ -34,3 +30,7 @@ C:\Users\Flugan\Ex-VoiceCon\VCT\VCT\VCT\obj\Debug\netcoreapp3.1\VCT.csproj.CopyC
 C:\Users\Flugan\Ex-VoiceCon\VCT\VCT\VCT\obj\Debug\netcoreapp3.1\VCT.dll
 C:\Users\Flugan\Ex-VoiceCon\VCT\VCT\VCT\obj\Debug\netcoreapp3.1\VCT.pdb
 C:\Users\Flugan\Ex-VoiceCon\VCT\VCT\VCT\obj\Debug\netcoreapp3.1\VCT.genruntimeconfig.cache
+C:\Users\Flugan\Ex-VoiceCon\VCT\VCT\VCT\obj\Debug\netcoreapp3.1\AddWindow.g.cs
+C:\Users\Flugan\Ex-VoiceCon\VCT\VCT\VCT\obj\Debug\netcoreapp3.1\MainWindow.g.cs
+C:\Users\Flugan\Ex-VoiceCon\VCT\VCT\VCT\obj\Debug\netcoreapp3.1\AddWindow.baml
+C:\Users\Flugan\Ex-VoiceCon\VCT\VCT\VCT\obj\Debug\netcoreapp3.1\MainWindow.baml

@@ -13,10 +13,10 @@
         <Button x:Name="BtnTest" Content="Test" HorizontalAlignment="Left" Margin="130,80,0,0" VerticalAlignment="Top" Width="74" Height="40" FontFamily="Times New Roman" FontSize="30" BorderThickness="2" Background="#FF2F8160" BorderBrush="#FF99E450" Foreground="White"/>
         <TextBox x:Name="TbSearch" HorizontalAlignment="Left" Height="40" Margin="443,80,0,0" TextWrapping="Wrap" Text="Search" VerticalAlignment="Top" Width="329" FontFamily="Times New Roman" FontSize="20" FontStyle="Italic" BorderBrush="#FF99E450" Background="#FF2F8160" Foreground="White" BorderThickness="2" MaxLines="1"/>
 
-        <Image x:Name="ImgComParent" HorizontalAlignment="Left" Margin="30,120,0,0" Width="740" IsEnabled="False" Source="/VCT-CommandBox.png" Height="285" VerticalAlignment="Top"/>
+        <Image x:Name="ImgComParent" HorizontalAlignment="Left" Margin="30,120,0,0" Width="740" IsEnabled="False" Source="/Sprites/VCT-CommandBox.png" Height="285" VerticalAlignment="Top"/>
 
         <WrapPanel x:Name="WPCom1" Margin="35,125,0,0" Height="40" Width="730" HorizontalAlignment="Left" VerticalAlignment="Top" >
-            <Image x:Name="Commanad1" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="675" IsEnabled="False" Source="/SmallComBox.png"/>
+            <Image x:Name="Commanad1" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="675" IsEnabled="False" Source="/Sprites/SmallComBox.png"/>
             <Label x:Name="lbTitle1" Margin="-675, 0,470,0" Content="Title Test" FontFamily="Times New Roman" Foreground="White" FontSize="20" HorizontalContentAlignment="Center"/>
             <Label x:Name="lbText1" Margin="-470, 0,190,0" Content="Text Test" FontFamily="Times New Roman" Foreground="White" FontSize="20" HorizontalContentAlignment="Center"/>
             <Label x:Name="lbTag1" Margin="-190, 0,75,0" Content="Tag Test" FontFamily="Times New Roman" Foreground="White" FontSize="20" HorizontalContentAlignment="Center"/>
