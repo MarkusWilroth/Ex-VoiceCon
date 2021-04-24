@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30503.244
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VoiceControllerTool", "VoiceControllerTool\VoiceControllerTool.csproj", "{9DBDB529-5BFA-4235-9140-6C71320E1651}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9DBDB529-5BFA-4235-9140-6C71320E1651}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DBDB529-5BFA-4235-9140-6C71320E1651}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DBDB529-5BFA-4235-9140-6C71320E1651}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DBDB529-5BFA-4235-9140-6C71320E1651}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2F5B7AB8-D772-45EC-94A5-95AFF7786342}
+	EndGlobalSection
+EndGlobal
