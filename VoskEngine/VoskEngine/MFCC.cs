@@ -88,9 +88,14 @@ namespace VoskEngine
                 double norm = samples[i].NormOfDifference(samples[i].Magnitude);
 
                 
+                winowSize = 25; //ms
+                double[] input = Window.Hann(winowSize); //replace dummy imput with the soundstream array of hz or bytes?
+                //Convert the samples of hz to mel scale
+                //mel= 1127.01048 * log(f/700 +1) //ver:1
+                //mel= (1000/log(2))(log(f/1000+1)) //ver:2
             }
 
-            
+
         }
 
         private void Process(/*audio file*/)              
@@ -113,7 +118,7 @@ namespace VoskEngine
         }
 
         /// <summary>
-        /// Returns an int which represents the window size in samples
+        /// Returns an int which represents the window size in [samples]
         /// </summary>
         /// <returns></returns>
         public int GetWindowSize()

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using VCTUtility;
+using VoskEngine;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,6 +26,8 @@ namespace VCT {
         private VoiceData voiceData;
         private MainWindow main;
 
+        private VCEngine engine;
+
         public AddWindow(MainWindow main) {
             InitializeComponent();
             this.main = main;
@@ -38,6 +41,9 @@ namespace VCT {
         private void StopRecording() {
             isRecording = false;
             rec = AudioSystem.StopRecording();
+
+            engine = new VCEngine();
+            //Send sound stream to engine along with device channels, samplerate etc
         }
 
         private bool SaveRecording() {

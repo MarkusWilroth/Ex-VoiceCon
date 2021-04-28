@@ -4,7 +4,7 @@ using System.IO;
 
 namespace VoskEngine
 {
-    class VCEngine
+    public class VCEngine
     {
         
 
@@ -14,7 +14,7 @@ namespace VoskEngine
 
 
             var projecDir = Directory.GetParent(Directory.GetParent(@"../").Parent.Parent.FullName);
-            var filePath = @"C:\Users\jasmi\source\repos\VoskEngine\VoskEngine\model\model-en\"; //This might have to be added as a resx path and then reffed that way.
+            var filePath = @"C:\Users\jasmi\source\repos\Ex-VoiceCon\VoskEngine\VoskEngine\model\model-en\"; //This might have to be added as a resx path and then reffed that way.
             var path = Path.Combine(projecDir.FullName, filePath);
 
             Model model = new Model(path);
@@ -31,7 +31,7 @@ namespace VoskEngine
         {
             // Demo byte buffer
             VoskRecognizer rec = new VoskRecognizer(model, 16000.0f);
-            using (Stream source = File.OpenRead("C:/Users/jasmi/source/repos/VoskEngine/VoskEngine/test.wav"))
+            using (Stream source = File.OpenRead(@"C:\Users\jasmi\source\repos\Ex-VoiceCon\VoskEngine\VoskEngine\test.wav"))
             {
                 byte[] buffer = new byte[4096];
                 int bytesRead;

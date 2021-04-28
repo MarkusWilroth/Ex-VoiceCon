@@ -1,7 +1,7 @@
 {
   "version": 3,
   "targets": {
-    "net5.0": {
+    ".NETCoreApp,Version=v3.1": {
       "MathNet.Numerics/4.15.0": {
         "type": "package",
         "compile": {
@@ -67,7 +67,7 @@
     }
   },
   "projectFileDependencyGroups": {
-    "net5.0": [
+    ".NETCoreApp,Version=v3.1": [
       "MathNet.Numerics >= 4.15.0",
       "Vosk >= 0.3.21"
     ]
@@ -79,11 +79,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jasmi\\OneDrive\\Desktop\\VoskEngine\\VoskEngine\\VoskEngine.csproj",
+      "projectUniqueName": "C:\\Users\\jasmi\\source\\repos\\Ex-VoiceCon\\VoskEngine\\VoskEngine\\VoskEngine.csproj",
       "projectName": "VoskEngine",
-      "projectPath": "C:\\Users\\jasmi\\OneDrive\\Desktop\\VoskEngine\\VoskEngine\\VoskEngine.csproj",
+      "projectPath": "C:\\Users\\jasmi\\source\\repos\\Ex-VoiceCon\\VoskEngine\\VoskEngine\\VoskEngine.csproj",
       "packagesPath": "C:\\Users\\jasmi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jasmi\\OneDrive\\Desktop\\VoskEngine\\VoskEngine\\obj\\",
+      "outputPath": "C:\\Users\\jasmi\\source\\repos\\Ex-VoiceCon\\VoskEngine\\VoskEngine\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -94,15 +94,15 @@
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "net5.0"
+        "netcoreapp3.1"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net5.0": {
-          "targetAlias": "net5.0",
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -113,8 +113,8 @@
       }
     },
     "frameworks": {
-      "net5.0": {
-        "targetAlias": "net5.0",
+      "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "MathNet.Numerics": {
             "target": "Package",

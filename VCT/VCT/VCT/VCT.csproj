@@ -39,6 +39,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\VoskEngine\VoskEngine\VoskEngine.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="C:\Users\Flugan\.nuget\packages\vosk\0.3.21\build\lib\win-x64\libvosk.dll" Link="Other\libvosk.dll" />
   </ItemGroup>
 
