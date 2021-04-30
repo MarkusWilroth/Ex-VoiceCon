@@ -10,10 +10,19 @@
         "dependencies": {
           "NAudio": "2.0.0",
           "Vosk": "0.3.21",
+          "VoskEngine": "1.0.0",
           "VCTUtility": "1.0.0.0"
         },
         "runtime": {
           "VCT.dll": {}
+        }
+      },
+      "MathNet.Numerics/4.15.0": {
+        "runtime": {
+          "lib/netstandard2.0/MathNet.Numerics.dll": {
+            "assemblyVersion": "4.15.0.0",
+            "fileVersion": "4.15.0.0"
+          }
         }
       },
       "Microsoft.NETCore.Platforms/3.1.0": {},
@@ -119,6 +128,15 @@
           }
         }
       },
+      "VoskEngine/1.0.0": {
+        "dependencies": {
+          "MathNet.Numerics": "4.15.0",
+          "Vosk": "0.3.21"
+        },
+        "runtime": {
+          "VoskEngine.dll": {}
+        }
+      },
       "VCTUtility/1.0.0.0": {
         "runtime": {
           "VCTUtility.dll": {
@@ -134,6 +152,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "MathNet.Numerics/4.15.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-cP4QgPPiU7boMyL8npvuQyVGVYUd/JQY1AWa+Wl2f//fuJN40qwt9ABRazunZIcDLHg3SSlgD/e+3Lnp69jNTg==",
+      "path": "mathnet.numerics/4.15.0",
+      "hashPath": "mathnet.numerics.4.15.0.nupkg.sha512"
     },
     "Microsoft.NETCore.Platforms/3.1.0": {
       "type": "package",
@@ -218,6 +243,11 @@
       "sha512": "sha512-JyUlcHiKrR6GG9SlsDcgkrHMlJ4lULw6LcLJnr/oPAXIKdFFlR57fWIA1CD+zpMUzLbuq0TCg9ZgOSubARAWrQ==",
       "path": "vosk/0.3.21",
       "hashPath": "vosk.0.3.21.nupkg.sha512"
+    },
+    "VoskEngine/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "VCTUtility/1.0.0.0": {
       "type": "reference",

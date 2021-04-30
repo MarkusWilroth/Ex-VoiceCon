@@ -69,3 +69,6 @@ C:\Users\jasmi\source\repos\Ex-VoiceCon\VCT\VCT\VCT\obj\Debug\netcoreapp3.1\VCT.
 C:\Users\jasmi\source\repos\Ex-VoiceCon\VCT\VCT\VCT\obj\Debug\netcoreapp3.1\VCT.csproj.CopyComplete
 C:\Users\jasmi\source\repos\Ex-VoiceCon\VCT\VCT\VCT\obj\Debug\netcoreapp3.1\VCT.pdb
 C:\Users\jasmi\source\repos\Ex-VoiceCon\VCT\VCT\VCT\obj\Debug\netcoreapp3.1\VCT.genruntimeconfig.cache
+C:\Users\jasmi\source\repos\Ex-VoiceCon\VCT\VCT\VCT\bin\Debug\netcoreapp3.1\MathNet.Numerics.dll
+C:\Users\jasmi\source\repos\Ex-VoiceCon\VCT\VCT\VCT\bin\Debug\netcoreapp3.1\VoskEngine.dll
+C:\Users\jasmi\source\repos\Ex-VoiceCon\VCT\VCT\VCT\bin\Debug\netcoreapp3.1\VoskEngine.pdb

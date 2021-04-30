@@ -6,7 +6,8 @@ namespace VoskEngine
 {
     public class VCEngine
     {
-        
+
+        private static Model model;
 
         public static void Main(string[] args)
         {
@@ -15,11 +16,12 @@ namespace VoskEngine
 
             var projecDir = Directory.GetParent(Directory.GetParent(@"../").Parent.Parent.FullName);
             var filePath = @"C:\Users\jasmi\source\repos\Ex-VoiceCon\VoskEngine\VoskEngine\model\model-en\"; //This might have to be added as a resx path and then reffed that way.
+            var path2 = @"C:\Users\jasmi\OneDrive\Desktop\model-en\";
             var path = Path.Combine(projecDir.FullName, filePath);
 
-            Model model = new Model(path);
+            model = new Model(path2);
 
-
+            
             DemoBytes(model);
         }
 
@@ -27,7 +29,7 @@ namespace VoskEngine
         /// To test that the engine works
         /// </summary>
         /// <param name="model"></param>
-        public static void DemoBytes(Model model)
+        private static void DemoBytes(Model model)
         {
             // Demo byte buffer
             VoskRecognizer rec = new VoskRecognizer(model, 16000.0f);
@@ -50,17 +52,28 @@ namespace VoskEngine
             Console.WriteLine(rec.FinalResult());
         }
 
-        public void DetectKW(Model model)
+        private void DetectKW() //called before MFCC to get Vosk Speech To Text
         {
-            VoskRecognizer rec = new VoskRecognizer(model, 16000.0f);
+            VoskRecognizer rec = new VoskRecognizer(model, 16000.0f); //16000hz = 16bit sample rate
 
-            //Capture recording, send it from the tool to the engine
-            //using (Stream source = File.OpenRead(Au))
-            //{
-
-            //}
+          
             
             
+        }
+
+        public void ValidateKeyphrase(MemoryStream stream, int sampleRate)
+        {
+            VoskRecognizer rec = new VoskRecognizer(model, sampleRate);
+            byte[] buffer = new byte[4096];
+            int bytesRead;
+
+            while ((bytesRead = stream.Read(buffer, 0, buffer.Length)) > 0)
+            {
+                if (rec.AcceptWaveform(buffer, bytesRead)) //check to see if basic detection goes through
+                {
+
+                }
+            }
         }
 
     }

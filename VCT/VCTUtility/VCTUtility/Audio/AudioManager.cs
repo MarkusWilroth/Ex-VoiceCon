@@ -14,6 +14,15 @@ namespace VCTUtility {
         private WaveInEvent waveIn;
         private WaveOut waveOut;
 
+
+        public int GetSampleRate() {
+            return waveIn.WaveFormat.SampleRate;
+        }
+
+        public int GetChannels() {
+            return waveIn.WaveFormat.Channels;
+        }
+
         public void StartRecording() {
             waveIn = new WaveInEvent() { //Skapar WaveIn och sätter in rätt inställningar
                 WaveFormat = new WaveFormat(44100, 16, 1)

@@ -17,5 +17,13 @@ namespace VCTUtility {
         public static MemoryStream StopRecording() {
             return audioManager.StopRecording();
         }
+
+        public static int GetSampleRate() {
+            return audioManager.GetSampleRate();
+        }
+
+        public static int GetChannels() {
+            return audioManager.GetChannels();
+        }
     }
 }
