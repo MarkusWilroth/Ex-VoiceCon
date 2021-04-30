@@ -45,7 +45,7 @@ namespace VCT {
 
             
             engine = new VCEngine();
-            engine.ValidateKeyphrase(rec,41000); //return boolic value if successful then save rec to "database" AudioSystem.GetSamplerate() <---I'M TRYING TO CALL FROM HERE
+            engine.ValidateKeyphrase(rec, 41000); //return boolic value if successful then save rec to "database" AudioSystem.GetSamplerate() <---I'M TRYING TO CALL FROM HERE
             //Send sound stream to engine along with device channels, samplerate etc
         }
 

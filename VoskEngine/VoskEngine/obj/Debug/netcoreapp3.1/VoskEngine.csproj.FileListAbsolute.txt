@@ -12,3 +12,4 @@ C:\Users\jasmi\source\repos\Ex-VoiceCon\VoskEngine\VoskEngine\obj\Debug\netcorea
 C:\Users\jasmi\source\repos\Ex-VoiceCon\VoskEngine\VoskEngine\obj\Debug\netcoreapp3.1\VoskEngine.csproj.CoreCompileInputs.cache
 C:\Users\jasmi\source\repos\Ex-VoiceCon\VoskEngine\VoskEngine\obj\Debug\netcoreapp3.1\VoskEngine.dll
 C:\Users\jasmi\source\repos\Ex-VoiceCon\VoskEngine\VoskEngine\obj\Debug\netcoreapp3.1\VoskEngine.pdb
+C:\Users\jasmi\source\repos\Ex-VoiceCon\VoskEngine\VoskEngine\obj\Debug\netcoreapp3.1\VoskEngine.csprojAssemblyReference.cache

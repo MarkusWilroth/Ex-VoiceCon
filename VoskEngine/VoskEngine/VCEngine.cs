@@ -71,10 +71,14 @@ namespace VoskEngine
             {
                 if (rec.AcceptWaveform(buffer, bytesRead)) //check to see if basic detection goes through
                 {
-
+                    
                 }
             }
+
+            //If validation is true, then train AI 
         }
+
+        
 
     }
 }
