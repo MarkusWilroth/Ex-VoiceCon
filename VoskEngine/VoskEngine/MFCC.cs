@@ -16,71 +16,80 @@ namespace VoskEngine
     class MFCC
     {
 
+        //General fields
+        private int winowSize;
+        private int hopSize;
+        private int sampleRate;
+        private double baseFreq;
 
-        int winowSize;
+        //Fields concerning mel filter banks
+        private double minFreq;
+        private double maxFreq; 
+        private int numberOfFilters;
 
-        double[] frame; //one frame
-        double[] frameMass; //an array of all frames of 2048 samples or 128 ms
-        double[] frameMassFFT; //array of FFT results for all frames
+        //Fields concerning MFCC settings
+        private int numberOfCoefficients;
+        private bool useFirstCoefficient; 
+
 
         int[] filterPoints = { 6,18,31,46,63,82,103,127,154,184,218,
                               257,299,348,402,463,531,608,695,792,901,1023}; //array of anchor points for filtering the frame spectrum
 
         double[,] H = new double[20, 1024]; //array of 20 filters for each MFCC
-        double[] mfcc = new double[20]; //MFCC array for a given speech sample
 
-        int numSamples = 1000;
-        int sampleRate = 2000;
+        int numSamples = 1000; //remove
+        
 
-        int RATE = 48000;
-        int BufferSize = (int)Math.Pow(2, 13);
 
         Complex[] samples;
+       
 
         //sampleRate - float sampes per second, must be greater than zero; not wohle-numbered values get rounded
         //windowSize - int size of window; must be 2^n and at least 32
         //numberCoefficients - int must be grate or equal to 1 and smaller than the number of filters
         //useFirstCoefficient - boolean indicates whether the first coefficient of the dct process should be used in the mfcc feature vector or not
+            //  The zero-order coefficient indicates the average power of the input signal.
+            //  The first-order coefficient represents the distribution
+            //  spectral energy between low and high frequencies.
         //minFreq - double start of the interval to place the mel-filters in
         //maxFreq - double end of the interval to place the mel-filters in
         //numberFilters - int number of mel-filters to place in the interval
 
-        public MFCC(float sampleRate, int windowSize, int numberCoefficients, bool useFirstCoefficient, double minFreq, double maxFreq, int numberFilters)
+        public MFCC(int _sampleRate, int _windowSize, int _numberOfCoefficients, bool _useFirstCoefficient, double _minFreq, double _maxFreq, int _numberFilters)
         {
             //Assign the values to the local mfcc obj
-            if (sampleRate == null)
-            {
-                throw new ArgumentException("The " + sampleRate.ToString() + " hasn't been assigned");
+            if (_sampleRate < 1) {
+                throw new ArgumentException("Sample rate must be greater than 1");
             }
-            else if (windowSize == null)
-            {
-                throw new ArgumentException("The " + windowSize.ToString() + " hasn't been assigned");
+            else if (_windowSize == null) {
+                throw new ArgumentException("window size has to be assigned");
             }
-            else if (numberCoefficients == null)
-            {
-                throw new ArgumentException("The " + numberCoefficients.ToString() + " hasn't been assigned");
+            else if (_numberOfCoefficients < 1 || _numberOfCoefficients >= _numberFilters) {
+                throw new ArgumentException("The number of coefficients has to be greater or equal to 1, and be smaller than the number of filters");
             }
-            else if (useFirstCoefficient == null)
-            {
-                throw new ArgumentException("The " + useFirstCoefficient.ToString() + " hasn't been assigned");
-            }
-            else if (minFreq == null)
-            {
+            else if (_minFreq >= 0 || _minFreq > _maxFreq || _maxFreq > 88200.0f) {
                 throw new ArgumentException("The " + minFreq.ToString() + " hasn't been assigned");
+            }         
+            else if (_numberFilters < 2 || _numberFilters > (winowSize / 2) + 1) {
+                throw new ArgumentException("Number filters must be at least 2 and smaller than the nyquist frequency");
             }
-            else if (maxFreq == null)
-            {
-                throw new ArgumentException("The " + maxFreq.ToString() + " hasn't been assigned");
-            }
-            else if (numberFilters == null) //or lesser than one etc, same for the rest
-            {
-                throw new ArgumentException("The " + numberFilters.ToString() + " hasn't been assigned");
-            }
+
+            this.sampleRate = _sampleRate;
+            this.winowSize = _windowSize;
+            this.numberOfCoefficients = _numberOfCoefficients;
+            this.useFirstCoefficient = _useFirstCoefficient;
+            this.minFreq = _minFreq;
+            this.maxFreq = _maxFreq;
+            this.numberOfFilters = _numberFilters;
+
+            this.hopSize = winowSize / 2; //50% Overleap
 
             samples = new Complex[numSamples];
 
 
             Fourier.Forward(samples, FourierOptions.NoScaling); //turn the samples from a time domain to a frequence domain
+
+            double[] input = Window.Hann(winowSize);
 
             for (int i = 0; i < samples.Length; i++)
             {
@@ -88,17 +97,89 @@ namespace VoskEngine
                 double norm = samples[i].NormOfDifference(samples[i].Magnitude);
 
                 
-                winowSize = 25; //ms
-                double[] input = Window.Hann(winowSize); //replace dummy imput with the soundstream array of hz or bytes?
-                //Convert the samples of hz to mel scale
-                //mel= 1127.01048 * log(f/700 +1) //ver:1
-                //mel= (1000/log(2))(log(f/1000+1)) //ver:2
-            }
-
-
+                
+                 
+                
+            }        
         }
 
-        private void Process(/*audio file*/)              
+
+        private double[] GetFilterBankBounderies(double _minFreq, double _maxFreq, int _numberOfFilters)
+        {
+            //create return array
+            double[] centers = new double[_numberOfFilters + 2];
+            double maxFreqMel, minFreqMel, deltaFreqMel, nextCenterMel;
+            double maxFreq2; //Check to see which conversion that yields most accurate data 
+                             
+            //Convert the samples of hz to mel scale                
+            //mel= 1127.01048 * log(f/700 +1) //ver:1                 Hz -> mel
+            //mel= (1000/log(2))(log(f/1000+1)) //ver:2
+            //f = 700 * (exp(mel / 1127.01048) - 1)  mel -> Hz
+
+            maxFreqMel = 1127.01048 * Math.Log(_maxFreq / 700 + 1);
+            maxFreq2 = (1000 / Math.Log(2)) * (Math.Log(_maxFreq / 1000 + 1));
+
+            minFreqMel = 1127.01048 * Math.Log(_minFreq / 700 + 1);
+
+            deltaFreqMel = (maxFreqMel - minFreqMel) / (_numberOfFilters + 1);
+
+            //create (numberFilters + 2) equidistant points for the triangles
+            nextCenterMel = minFreqMel;
+
+            for (int i = 0; i < centers.Length; i++)
+            {
+                //transform the points back to linear scale
+                centers[i] = 700 * (Math.Exp(nextCenterMel / 1127.01048) - 1);
+                nextCenterMel += deltaFreqMel;
+            }
+            //ajust boundaries to exactly fit the given min./max. frequency
+            centers[0] = minFreq;
+            centers[_numberOfFilters + 1] = maxFreq;
+
+            return centers;
+        }
+
+        private Matrix GetFilterBanks()
+        {
+            double[] boundaries = GetFilterBankBounderies(minFreq, maxFreq, numberOfFilters);
+
+
+            //ignore filters outside of spectrum
+            for (int i = 1; i < boundaries.Length - 1; i++)
+            {
+                if (boundaries[i] > sampleRate / 2)
+                {
+                    numberOfFilters = i - 1;
+                    break;
+                }
+            }
+
+            //create the filter bank matrix
+            double[][] matrix = new double[numberOfFilters][];
+
+            //fill each row of the filter bank matrix with one triangular mel filter
+            for (int i = 1; i <= numberOfFilters; i++)
+            {
+                double[] filter = new double[(winowSize / 2) + 1];
+
+                //for each frequency of the fft
+                for (int j = 0; j < filter.Length; j++)
+                {
+                    //compute the filter weight of the current triangular mel filter
+                    double freq = baseFreq * j;
+                    filter[j] = GetMelFilterWeight(i, freq, boundaries);
+                }
+
+                //add the computed mel filter to the filter bank
+                matrix[i - 1] = filter;
+            }
+
+            
+            //return the filter bank
+            return new Matrix(matrix, numberOfFilters, (winowSize / 2) + 1); //bygg matrix classen som kan hantera att man skickar in martrisvektorerna och storleken
+        }
+
+        private void Process(/*audio file*/)              //Add MFCC coefficent value as an atrribute to the *VoiceData
         {
             if (/*audio file is null*/true)
             {
@@ -108,13 +189,42 @@ namespace VoskEngine
             //Else add to list?
         }
 
-        //input - double[] input data is an array of samples in db SoundPreassureLevel (backgrund noise), must be a multiple of the hop size, must not be a null value. Hop siize = number of samples between each successive FFT window
-        //double[][] an array of arrays contains a double array of Sone value for each window. AKA the aucustion value or percieved loudness
+        //input - double[] input data is an array of samples in db SoundPreassureLevel (backgrund noise),
+        //must be a multiple of the hop size, must not be a null value.
+        //Hop siize = number of samples between each successive FFT window
+        //double[][] an array of arrays contains a double array of Sone value for each window.
+        //AKA the aucustion value or percieved loudness
         public double[][] Process(double[] input)
         {
-            double[][] result = null; //fix
+            //check for null
+            if (input == null)
+                throw new Exception("input data must not be a null value");
 
-            return result;
+            //check for correct array length
+            if ((input.Length % hopSize) != 0)
+            {
+                double arrayLength = (double)input.Length / hopSize;
+                arrayLength = Math.Round(arrayLength);
+                int lenNew = (int)arrayLength * hopSize;
+                Array.Resize<double>(ref input, lenNew);
+                //throw new Exception("Input data must be multiple of hop size (windowSize/2).");
+            }
+
+            //create return array with appropriate size
+            int len = (input.Length / hopSize) - 1;
+            double[][] mfcc = new double[len][];
+            for (int i = 0; i < len; i++)
+            {
+                mfcc[i] = new double[numberOfCoefficients];
+            }
+
+            //process each window of this audio segment
+            for (int i = 0, pos = 0; pos < input.Length - hopSize; i++, pos += hopSize)
+            {
+                mfcc[i] = ProcessWindow(input, pos);
+            }
+
+            return mfcc;
         }
 
         /// <summary>
@@ -123,7 +233,7 @@ namespace VoskEngine
         /// <returns></returns>
         public int GetWindowSize()
         {
-            return winowSize;
+            return samples.Length; //
         }
         /*
          * Note from StackOverflow

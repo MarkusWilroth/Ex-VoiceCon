@@ -34,13 +34,6 @@ C:\Users\Flugan\Ex-VoiceCon\VCT\VCT\VCT\obj\Debug\netcoreapp3.1\AddWindow.g.cs
 C:\Users\Flugan\Ex-VoiceCon\VCT\VCT\VCT\obj\Debug\netcoreapp3.1\MainWindow.g.cs
 C:\Users\Flugan\Ex-VoiceCon\VCT\VCT\VCT\obj\Debug\netcoreapp3.1\AddWindow.baml
 C:\Users\Flugan\Ex-VoiceCon\VCT\VCT\VCT\obj\Debug\netcoreapp3.1\MainWindow.baml
-C:\Users\jasmi\source\repos\Ex-VoiceCon\VCT\VCT\VCT\obj\Debug\netcoreapp3.1\VCT.csprojAssemblyReference.cache
-C:\Users\jasmi\source\repos\Ex-VoiceCon\VCT\VCT\VCT\obj\Debug\netcoreapp3.1\AddWindow.g.cs
-C:\Users\jasmi\source\repos\Ex-VoiceCon\VCT\VCT\VCT\obj\Debug\netcoreapp3.1\MainWindow.g.cs
-C:\Users\jasmi\source\repos\Ex-VoiceCon\VCT\VCT\VCT\obj\Debug\netcoreapp3.1\App.g.cs
-C:\Users\jasmi\source\repos\Ex-VoiceCon\VCT\VCT\VCT\obj\Debug\netcoreapp3.1\VCT_MarkupCompile.cache
-C:\Users\jasmi\source\repos\Ex-VoiceCon\VCT\VCT\VCT\obj\Debug\netcoreapp3.1\VCT_MarkupCompile.lref
-C:\Users\jasmi\source\repos\Ex-VoiceCon\VCT\VCT\VCT\obj\Debug\netcoreapp3.1\VCT.dll
 C:\Users\jasmi\source\repos\Ex-VoiceCon\VCT\VCT\VCT\bin\Debug\netcoreapp3.1\libgcc_s_seh-1.dll
 C:\Users\jasmi\source\repos\Ex-VoiceCon\VCT\VCT\VCT\bin\Debug\netcoreapp3.1\libstdc++-6.dll
 C:\Users\jasmi\source\repos\Ex-VoiceCon\VCT\VCT\VCT\bin\Debug\netcoreapp3.1\libvosk.dll
@@ -51,6 +44,7 @@ C:\Users\jasmi\source\repos\Ex-VoiceCon\VCT\VCT\VCT\bin\Debug\netcoreapp3.1\VCT.
 C:\Users\jasmi\source\repos\Ex-VoiceCon\VCT\VCT\VCT\bin\Debug\netcoreapp3.1\VCT.runtimeconfig.dev.json
 C:\Users\jasmi\source\repos\Ex-VoiceCon\VCT\VCT\VCT\bin\Debug\netcoreapp3.1\VCT.dll
 C:\Users\jasmi\source\repos\Ex-VoiceCon\VCT\VCT\VCT\bin\Debug\netcoreapp3.1\VCT.pdb
+C:\Users\jasmi\source\repos\Ex-VoiceCon\VCT\VCT\VCT\bin\Debug\netcoreapp3.1\MathNet.Numerics.dll
 C:\Users\jasmi\source\repos\Ex-VoiceCon\VCT\VCT\VCT\bin\Debug\netcoreapp3.1\NAudio.dll
 C:\Users\jasmi\source\repos\Ex-VoiceCon\VCT\VCT\VCT\bin\Debug\netcoreapp3.1\NAudio.Asio.dll
 C:\Users\jasmi\source\repos\Ex-VoiceCon\VCT\VCT\VCT\bin\Debug\netcoreapp3.1\NAudio.Core.dll
@@ -60,6 +54,14 @@ C:\Users\jasmi\source\repos\Ex-VoiceCon\VCT\VCT\VCT\bin\Debug\netcoreapp3.1\NAud
 C:\Users\jasmi\source\repos\Ex-VoiceCon\VCT\VCT\VCT\bin\Debug\netcoreapp3.1\NAudio.WinMM.dll
 C:\Users\jasmi\source\repos\Ex-VoiceCon\VCT\VCT\VCT\bin\Debug\netcoreapp3.1\Vosk.dll
 C:\Users\jasmi\source\repos\Ex-VoiceCon\VCT\VCT\VCT\bin\Debug\netcoreapp3.1\VCTUtility.dll
+C:\Users\jasmi\source\repos\Ex-VoiceCon\VCT\VCT\VCT\bin\Debug\netcoreapp3.1\VoskEngine.dll
+C:\Users\jasmi\source\repos\Ex-VoiceCon\VCT\VCT\VCT\bin\Debug\netcoreapp3.1\VoskEngine.pdb
+C:\Users\jasmi\source\repos\Ex-VoiceCon\VCT\VCT\VCT\obj\Debug\netcoreapp3.1\VCT.csprojAssemblyReference.cache
+C:\Users\jasmi\source\repos\Ex-VoiceCon\VCT\VCT\VCT\obj\Debug\netcoreapp3.1\AddWindow.g.cs
+C:\Users\jasmi\source\repos\Ex-VoiceCon\VCT\VCT\VCT\obj\Debug\netcoreapp3.1\MainWindow.g.cs
+C:\Users\jasmi\source\repos\Ex-VoiceCon\VCT\VCT\VCT\obj\Debug\netcoreapp3.1\App.g.cs
+C:\Users\jasmi\source\repos\Ex-VoiceCon\VCT\VCT\VCT\obj\Debug\netcoreapp3.1\VCT_MarkupCompile.cache
+C:\Users\jasmi\source\repos\Ex-VoiceCon\VCT\VCT\VCT\obj\Debug\netcoreapp3.1\VCT_MarkupCompile.lref
 C:\Users\jasmi\source\repos\Ex-VoiceCon\VCT\VCT\VCT\obj\Debug\netcoreapp3.1\AddWindow.baml
 C:\Users\jasmi\source\repos\Ex-VoiceCon\VCT\VCT\VCT\obj\Debug\netcoreapp3.1\MainWindow.baml
 C:\Users\jasmi\source\repos\Ex-VoiceCon\VCT\VCT\VCT\obj\Debug\netcoreapp3.1\VCT.g.resources
@@ -67,8 +69,7 @@ C:\Users\jasmi\source\repos\Ex-VoiceCon\VCT\VCT\VCT\obj\Debug\netcoreapp3.1\VCT.
 C:\Users\jasmi\source\repos\Ex-VoiceCon\VCT\VCT\VCT\obj\Debug\netcoreapp3.1\VCT.AssemblyInfo.cs
 C:\Users\jasmi\source\repos\Ex-VoiceCon\VCT\VCT\VCT\obj\Debug\netcoreapp3.1\VCT.csproj.CoreCompileInputs.cache
 C:\Users\jasmi\source\repos\Ex-VoiceCon\VCT\VCT\VCT\obj\Debug\netcoreapp3.1\VCT.csproj.CopyComplete
+C:\Users\jasmi\source\repos\Ex-VoiceCon\VCT\VCT\VCT\obj\Debug\netcoreapp3.1\VCT.dll
 C:\Users\jasmi\source\repos\Ex-VoiceCon\VCT\VCT\VCT\obj\Debug\netcoreapp3.1\VCT.pdb
 C:\Users\jasmi\source\repos\Ex-VoiceCon\VCT\VCT\VCT\obj\Debug\netcoreapp3.1\VCT.genruntimeconfig.cache
-C:\Users\jasmi\source\repos\Ex-VoiceCon\VCT\VCT\VCT\bin\Debug\netcoreapp3.1\MathNet.Numerics.dll
-C:\Users\jasmi\source\repos\Ex-VoiceCon\VCT\VCT\VCT\bin\Debug\netcoreapp3.1\VoskEngine.dll
-C:\Users\jasmi\source\repos\Ex-VoiceCon\VCT\VCT\VCT\bin\Debug\netcoreapp3.1\VoskEngine.pdb
+C:\Users\jasmi\source\repos\Ex-VoiceCon\VCT\VCT\VCT\bin\Debug\netcoreapp3.1\VCTUtility.pdb

@@ -8,6 +8,7 @@ namespace VoskEngine
     {
 
         private static Model model;
+        private MFCC mfcc;
 
         public static void Main(string[] args)
         {
@@ -22,7 +23,7 @@ namespace VoskEngine
             model = new Model(path2);
 
             
-            DemoBytes(model);
+            //DemoBytes(model); //to test Vosk
         }
 
         /// <summary>
@@ -52,6 +53,7 @@ namespace VoskEngine
             Console.WriteLine(rec.FinalResult());
         }
 
+
         private void DetectKW() //called before MFCC to get Vosk Speech To Text
         {
             VoskRecognizer rec = new VoskRecognizer(model, 16000.0f); //16000hz = 16bit sample rate
@@ -61,24 +63,37 @@ namespace VoskEngine
             
         }
 
-        public void ValidateKeyphrase(MemoryStream stream, int sampleRate)
+        public void ValidateKeyphrase(MemoryStream stream, int sampleRate, int numbOfChannels)
         {
             VoskRecognizer rec = new VoskRecognizer(model, sampleRate);
+
             byte[] buffer = new byte[4096];
             int bytesRead;
+
+            string detectedText;
 
             while ((bytesRead = stream.Read(buffer, 0, buffer.Length)) > 0)
             {
                 if (rec.AcceptWaveform(buffer, bytesRead)) //check to see if basic detection goes through
                 {
-                    
+                    detectedText = rec.Result();
+                }
+                else
+                {
+                    detectedText = rec.PartialResult();
                 }
             }
+
+            //minFreq
+            mfcc = new MFCC(sampleRate, 512, 20, true, 20.0, 16000.0, 40); //windwowsize 32msek = 512 samples 16msek = 256 samples. numberOfCoefficients should be between 20-40 since thats where human speech mostly exists
 
             //If validation is true, then train AI 
         }
 
-        
+        public void TrainSet()
+        {
+            
+        }
 
     }
 }

@@ -26,7 +26,7 @@ namespace VCT {
         private VoiceData voiceData;
         private MainWindow main;
 
-        private VCEngine engine;
+        private VCEngine engine = new VCEngine();
 
         public AddWindow(MainWindow main) {
             InitializeComponent();
@@ -44,9 +44,9 @@ namespace VCT {
 
 
             
-            engine = new VCEngine();
-            engine.ValidateKeyphrase(rec, 41000); //return boolic value if successful then save rec to "database" AudioSystem.GetSamplerate() <---I'M TRYING TO CALL FROM HERE
-            //Send sound stream to engine along with device channels, samplerate etc
+            engine.ValidateKeyphrase(rec, AudioSystem.GetSampleRate(), AudioSystem.GetChannels()); //return boolic value if successful then save rec to "database" 
+
+
         }
 
         private bool SaveRecording() {
