@@ -17,7 +17,7 @@ namespace VoskEngine
     {
 
         //General fields
-        private int winowSize;
+        private int windowSize;
         private int hopSize;
         private int sampleRate;
         private double baseFreq;
@@ -29,7 +29,15 @@ namespace VoskEngine
 
         //Fields concerning MFCC settings
         private int numberOfCoefficients;
-        private bool useFirstCoefficient; 
+        private bool useFirstCoefficient;
+
+        //implementation details
+        private double[] inputData;
+        private double[] buffer;
+        public Matrix dctMatrix;
+        public Matrix melFilterBanks;
+        private Complex[] samples;
+        
 
 
         int[] filterPoints = { 6,18,31,46,63,82,103,127,154,184,218,
@@ -40,9 +48,6 @@ namespace VoskEngine
         int numSamples = 1000; //remove
         
 
-
-        Complex[] samples;
-       
 
         //sampleRate - float sampes per second, must be greater than zero; not wohle-numbered values get rounded
         //windowSize - int size of window; must be 2^n and at least 32
@@ -70,36 +75,42 @@ namespace VoskEngine
             else if (_minFreq >= 0 || _minFreq > _maxFreq || _maxFreq > 88200.0f) {
                 throw new ArgumentException("The " + minFreq.ToString() + " hasn't been assigned");
             }         
-            else if (_numberFilters < 2 || _numberFilters > (winowSize / 2) + 1) {
+            else if (_numberFilters < 2 || _numberFilters > (windowSize / 2) + 1) {
                 throw new ArgumentException("Number filters must be at least 2 and smaller than the nyquist frequency");
             }
 
             this.sampleRate = _sampleRate;
-            this.winowSize = _windowSize;
+            this.windowSize = _windowSize;
             this.numberOfCoefficients = _numberOfCoefficients;
             this.useFirstCoefficient = _useFirstCoefficient;
             this.minFreq = _minFreq;
             this.maxFreq = _maxFreq;
             this.numberOfFilters = _numberFilters;
 
-            this.hopSize = winowSize / 2; //50% Overleap
+            this.hopSize = windowSize / 2; //50% Overleap
 
-            samples = new Complex[numSamples];
+            //create buffers
+            inputData = new double[windowSize];
+            buffer = new double[windowSize];
+
+            melFilterBanks = GetFilterBanks();
+
+            dctMatrix = GetDCTMatrix();
+
+            Fourier.Forward(buffer, null, FourierOptions.NoScaling);
+
+            //create power fft object
+            samples = new Matrix(buffer, windowSize);  //FFT.FFT_NORMALIZED_POWER, windowSize, FFT.WND_HANNING
 
 
-            Fourier.Forward(samples, FourierOptions.NoScaling); //turn the samples from a time domain to a frequence domain
+            //Fourier.Forward(samples, FourierOptions.NoScaling); //turn the samples from a time domain to a frequence domain
 
-            double[] input = Window.Hann(winowSize);
+            //double[] input = Window.Hann(windowSize);
 
             for (int i = 0; i < samples.Length; i++)
             {
                 //MathNet.Numerics.Window.Hann(/*window with*/);
-                double norm = samples[i].NormOfDifference(samples[i].Magnitude);
-
-                
-                
-                 
-                
+                double norm = samples[i].NormOfDifference(samples[i].Magnitude);          
             }        
         }
 
@@ -126,8 +137,7 @@ namespace VoskEngine
             //create (numberFilters + 2) equidistant points for the triangles
             nextCenterMel = minFreqMel;
 
-            for (int i = 0; i < centers.Length; i++)
-            {
+            for (int i = 0; i < centers.Length; i++) {
                 //transform the points back to linear scale
                 centers[i] = 700 * (Math.Exp(nextCenterMel / 1127.01048) - 1);
                 nextCenterMel += deltaFreqMel;
@@ -145,10 +155,8 @@ namespace VoskEngine
 
 
             //ignore filters outside of spectrum
-            for (int i = 1; i < boundaries.Length - 1; i++)
-            {
-                if (boundaries[i] > sampleRate / 2)
-                {
+            for (int i = 1; i < boundaries.Length - 1; i++) {
+                if (boundaries[i] > sampleRate / 2) {
                     numberOfFilters = i - 1;
                     break;
                 }
@@ -158,13 +166,11 @@ namespace VoskEngine
             double[][] matrix = new double[numberOfFilters][];
 
             //fill each row of the filter bank matrix with one triangular mel filter
-            for (int i = 1; i <= numberOfFilters; i++)
-            {
-                double[] filter = new double[(winowSize / 2) + 1];
+            for (int i = 1; i <= numberOfFilters; i++) {
+                double[] filter = new double[(windowSize / 2) + 1];
 
                 //for each frequency of the fft
-                for (int j = 0; j < filter.Length; j++)
-                {
+                for (int j = 0; j < filter.Length; j++) {
                     //compute the filter weight of the current triangular mel filter
                     double freq = baseFreq * j;
                     filter[j] = GetMelFilterWeight(i, freq, boundaries);
@@ -172,11 +178,53 @@ namespace VoskEngine
 
                 //add the computed mel filter to the filter bank
                 matrix[i - 1] = filter;
-            }
-
-            
+            }           
             //return the filter bank
-            return new Matrix(matrix, numberOfFilters, (winowSize / 2) + 1); //bygg matrix classen som kan hantera att man skickar in martrisvektorerna och storleken
+            return new Matrix(matrix, numberOfFilters, (windowSize / 2) + 1); //bygg matrix classen som kan hantera att man skickar in martrisvektorerna och storleken
+        }
+
+
+        /// <summary>
+		/// Returns the filter weight of a given mel filter at a given freqency.
+		/// Mel-filters are triangular filters on the linear scale with an integral
+		/// (area) of 1. However they are placed equidistantly on the mel scale, which
+		/// is non-linear rather logarithmic.
+		/// Consequently there are lots of high, thin filters at start of the linear
+		/// scale and rather few and flat filters at the end of the linear scale.
+		/// Since the start-, center- and end-points of the triangular mel-filters on
+		/// the linear scale are known, the weigths are computed using linear
+		/// interpolation.
+		/// </summary>
+		/// <param name="filterBank">int the number of the mel-filter, used to exract the
+		///                       boundaries of the filter from the array</param>
+		/// <param name="freq">double the frequency, at which the filter weight should be
+		///                       returned</param>
+		/// <param name="boundaries">double[] an array containing all the boundaries</param>
+		/// <returns>double the filter weight</returns>
+        private double GetMelFilterWeight(int filterbank, double frequency, double[] boundaries)
+        {
+            //for most frequencies the filter weight is 0
+            double result = 0;
+
+            //compute start- , center- and endpoint as well as the height of the filter
+            double start = boundaries[filterbank - 1];
+            double center = boundaries[filterbank];
+            double end = boundaries[filterbank + 1];
+            double height = 2.0d / (end - start);
+
+            //is the frequency within the triangular part of the filter
+            if (frequency >= start && frequency <= end) {
+                //depending on frequencys position within the triangle
+                if (frequency < center) {
+                    //...use a ascending linear function
+                    result = (frequency - start) * (height / (center - start));
+                }
+                else {
+                    //..use a descending linear function
+                    result = height + ((frequency - center) * (-height / (end - center)));
+                }
+            }
+            return result;
         }
 
         private void Process(/*audio file*/)              //Add MFCC coefficent value as an atrribute to the *VoiceData
@@ -201,8 +249,7 @@ namespace VoskEngine
                 throw new Exception("input data must not be a null value");
 
             //check for correct array length
-            if ((input.Length % hopSize) != 0)
-            {
+            if ((input.Length % hopSize) != 0) {
                 double arrayLength = (double)input.Length / hopSize;
                 arrayLength = Math.Round(arrayLength);
                 int lenNew = (int)arrayLength * hopSize;
@@ -213,17 +260,15 @@ namespace VoskEngine
             //create return array with appropriate size
             int len = (input.Length / hopSize) - 1;
             double[][] mfcc = new double[len][];
-            for (int i = 0; i < len; i++)
-            {
+
+            for (int i = 0; i < len; i++) {
                 mfcc[i] = new double[numberOfCoefficients];
             }
 
             //process each window of this audio segment
-            for (int i = 0, pos = 0; pos < input.Length - hopSize; i++, pos += hopSize)
-            {
+            for (int i = 0, pos = 0; pos < input.Length - hopSize; i++, pos += hopSize) {
                 mfcc[i] = ProcessWindow(input, pos);
             }
-
             return mfcc;
         }
 
@@ -235,24 +280,76 @@ namespace VoskEngine
         {
             return samples.Length; //
         }
-        /*
-         * Note from StackOverflow
+
+        public Matrix GetDCTMatrix()
+        {
+            //compute constants
+            double k = Math.PI / numberOfFilters;
+            double w1 = 1.0 / (Math.Sqrt(numberOfFilters));
+            double w2 = Math.Sqrt(2.0 / numberOfFilters);
+
+            //create new matrix
+            Matrix matrix = new Matrix(numberOfCoefficients, numberOfFilters);
+
+            //generate dct matrix
+            for (int i = 0; i < numberOfCoefficients; i++)
+            {
+                for (int j = 0; j < numberOfFilters; j++)
+                {
+                    if (i == 0)
+                        matrix.Set(i, j, w1 * Math.Cos(k * i * (j + 0.5d)));
+                    else
+                        matrix.Set(i, j, w2 * Math.Cos(k * i * (j + 0.5d)));
+                }
+            }
+
+            //adjust index if we are using first coefficient
+            if (!useFirstCoefficient)
+                matrix = matrix.GetMatrix(1, numberOfCoefficients - 1, 0, numberOfFilters - 1);
+
+            return matrix;
+        }
+
+        /*Note from StackOverflow
         Many common (but not all) FFT libraries scale the FFT result of a unit amplitude sinusoid by the length of the FFT. 
         This maintains Parsevals equality since a longer sinusoid represents more total energy than a shorter one of the same amplitude.
         If you don't want to scale by the FFT length when using one of these libraries, then divide by the length before computing the magnitude in dB.
-
          */
+
+        /// <summary>
+		/// Transforms one window of MFCCs. The following steps are
+		/// performed:
+		/// (1) normalized power fft with hanning window function
+		/// (2) convert to Mel scale by applying a mel filter bank
+		/// (3) convertion to db<br>
+		/// (4) finally a DCT is performed to get the mfcc<br>
+        /// 
+		/// This process is mathematical identical with the process described in [1].
+		/// </summary>
+		/// <param name="_window">double[] data to be converted, must contain enough data for
+		///                        one window</param>
+		/// <param name="start">int start index of the window data</param>
+		/// <returns>double[] the window representation in Sone</returns>
         public double[] ProcessWindow(double[] _window, int start)
         {
-            if (_window == null)
-            {
-                throw new ArgumentException("The " + _window.ToString() + " hasn't been assigned");
-            }
-            else if (start == null)
-            {
-                throw new ArgumentException("The " + start.ToString() + " hasn't been assigned");
-            }
+            //number of unique coefficients, and the rest are symmetrically redundant
+            int fftSize = (windowSize / 2) + 1;
 
+            //check start
+            if (start < 0)
+                throw new Exception("start must be a positive value");
+
+            //check window size
+            if (_window == null || _window.Length - start < windowSize)
+                throw new Exception("the given data array must not be a null value and must contain data for one window");
+
+            //just copy to buffer
+            for (int j = 0; j < windowSize; j++)
+                buffer[j] = _window[j + start];
+
+            //perform power fft
+            //samples.Transform(buffer, null); old
+            Fourier.Forward(buffer, null,FourierOptions.NoScaling);
 
             return null;
         }
