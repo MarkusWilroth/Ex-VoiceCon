@@ -15,7 +15,6 @@ namespace VoskEngine
 {
     class MFCC
     {
-
         //General fields
         private int windowSize;
         private int hopSize;
@@ -25,6 +24,7 @@ namespace VoskEngine
         //Fields concerning mel filter banks
         private double minFreq;
         private double maxFreq; 
+
         private int numberOfFilters;
 
         //Fields concerning MFCC settings
@@ -43,9 +43,6 @@ namespace VoskEngine
         int[] filterPoints = { 6,18,31,46,63,82,103,127,154,184,218,
                               257,299,348,402,463,531,608,695,792,901,1023}; //array of anchor points for filtering the frame spectrum
 
-        double[,] H = new double[20, 1024]; //array of 20 filters for each MFCC
-
-        int numSamples = 1000; //remove
         
 
 
@@ -59,7 +56,6 @@ namespace VoskEngine
         //minFreq - double start of the interval to place the mel-filters in
         //maxFreq - double end of the interval to place the mel-filters in
         //numberFilters - int number of mel-filters to place in the interval
-
         public MFCC(int _sampleRate, int _windowSize, int _numberOfCoefficients, bool _useFirstCoefficient, double _minFreq, double _maxFreq, int _numberFilters)
         {
             //Assign the values to the local mfcc obj
@@ -85,6 +81,7 @@ namespace VoskEngine
             this.useFirstCoefficient = _useFirstCoefficient;
             this.minFreq = _minFreq;
             this.maxFreq = _maxFreq;
+            this.baseFreq = sampleRate / windowSize;
             this.numberOfFilters = _numberFilters;
 
             this.hopSize = windowSize / 2; //50% Overleap
@@ -94,24 +91,10 @@ namespace VoskEngine
             buffer = new double[windowSize];
 
             melFilterBanks = GetFilterBanks();
-
             dctMatrix = GetDCTMatrix();
 
-            Fourier.Forward(buffer, null, FourierOptions.NoScaling);
-
             //create power fft object
-            samples = new Matrix(buffer, windowSize);  //FFT.FFT_NORMALIZED_POWER, windowSize, FFT.WND_HANNING
-
-
-            //Fourier.Forward(samples, FourierOptions.NoScaling); //turn the samples from a time domain to a frequence domain
-
-            //double[] input = Window.Hann(windowSize);
-
-            for (int i = 0; i < samples.Length; i++)
-            {
-                //MathNet.Numerics.Window.Hann(/*window with*/);
-                double norm = samples[i].NormOfDifference(samples[i].Magnitude);          
-            }        
+            Fourier.Forward(buffer, Window.Hann(buffer.Length), FourierOptions.NoScaling);  //FFT.FFT_NORMALIZED_POWER, windowSize, FFT.WND_HANNING
         }
 
 
@@ -183,7 +166,6 @@ namespace VoskEngine
             return new Matrix(matrix, numberOfFilters, (windowSize / 2) + 1); //bygg matrix classen som kan hantera att man skickar in martrisvektorerna och storleken
         }
 
-
         /// <summary>
 		/// Returns the filter weight of a given mel filter at a given freqency.
 		/// Mel-filters are triangular filters on the linear scale with an integral
@@ -227,16 +209,6 @@ namespace VoskEngine
             return result;
         }
 
-        private void Process(/*audio file*/)              //Add MFCC coefficent value as an atrribute to the *VoiceData
-        {
-            if (/*audio file is null*/true)
-            {
-                //Throw exeption 
-            }
-
-            //Else add to list?
-        }
-
         //input - double[] input data is an array of samples in db SoundPreassureLevel (backgrund noise),
         //must be a multiple of the hop size, must not be a null value.
         //Hop siize = number of samples between each successive FFT window
@@ -270,6 +242,65 @@ namespace VoskEngine
                 mfcc[i] = ProcessWindow(input, pos);
             }
             return mfcc;
+        }
+
+        /*Note from StackOverflow
+       Many common (but not all) FFT libraries scale the FFT result of a unit amplitude sinusoid by the length of the FFT. 
+       This maintains Parsevals equality since a longer sinusoid represents more total energy than a shorter one of the same amplitude.
+       If you don't want to scale by the FFT length when using one of these libraries, then divide by the length before computing the magnitude in dB.
+        */
+
+        /// <summary>
+        /// Transforms one window of MFCCs. The following steps are
+        /// performed:
+        /// (1) normalized power fft with hanning window function
+        /// (2) convert to Mel scale by applying a mel filter bank
+        /// (3) convertion to db<br>
+        /// (4) finally a DCT is performed to get the mfcc<br>
+        /// 
+        /// This process is mathematical identical with the process described in [1].
+        /// </summary>
+        /// <param name="_window">double[] data to be converted, must contain enough data for
+        ///                        one window</param>
+        /// <param name="start">int start index of the window data</param>
+        /// <returns>double[] the window representation in Sone</returns>
+        public double[] ProcessWindow(double[] _window, int start)
+        {
+            //number of unique coefficients, and the rest are symmetrically redundant
+            int fftSize = (windowSize / 2) + 1;
+
+            //check start
+            if (start < 0)
+                throw new Exception("start must be a positive value");
+
+            //check window size
+            if (_window == null || _window.Length - start < windowSize)
+                throw new Exception("the given data array must not be a null value and must contain data for one window");
+
+            //just copy to buffer
+            for (int j = 0; j < windowSize; j++)
+                buffer[j] = _window[j + start];
+
+            //perform power fft
+            Fourier.InverseReal(buffer, buffer.Length, FourierOptions.NoScaling);
+
+            //use all coefficient up to the nequist frequency (ceil((fftSize+1)/2))
+            Matrix x = new Matrix(buffer, windowSize);
+            x = x.GetMatrix(0, fftSize - 1, 0, 0); //fftSize-1 is the index of the nyquist frequency
+
+            //apply mel filter banks
+            x = melFilterBanks.Times(x);
+
+            //to db
+            double log10 = 10 * (1 / Math.Log(10)); // log for base 10 and scale by factor 10
+            x.ThrunkAtLowerBoundary(1);
+            x.LogEquals();
+            x.TimesEquals(log10);
+
+            ////compute DCT
+            x = dctMatrix.Times(x);
+
+            return x.GetColumnPackedCopy();
         }
 
         /// <summary>
@@ -310,75 +341,22 @@ namespace VoskEngine
             return matrix;
         }
 
-        /*Note from StackOverflow
-        Many common (but not all) FFT libraries scale the FFT result of a unit amplitude sinusoid by the length of the FFT. 
-        This maintains Parsevals equality since a longer sinusoid represents more total energy than a shorter one of the same amplitude.
-        If you don't want to scale by the FFT length when using one of these libraries, then divide by the length before computing the magnitude in dB.
-         */
-
         /// <summary>
-		/// Transforms one window of MFCCs. The following steps are
-		/// performed:
-		/// (1) normalized power fft with hanning window function
-		/// (2) convert to Mel scale by applying a mel filter bank
-		/// (3) convertion to db<br>
-		/// (4) finally a DCT is performed to get the mfcc<br>
-        /// 
-		/// This process is mathematical identical with the process described in [1].
-		/// </summary>
-		/// <param name="_window">double[] data to be converted, must contain enough data for
-		///                        one window</param>
-		/// <param name="start">int start index of the window data</param>
-		/// <returns>double[] the window representation in Sone</returns>
-        public double[] ProcessWindow(double[] _window, int start)
-        {
-            //number of unique coefficients, and the rest are symmetrically redundant
-            int fftSize = (windowSize / 2) + 1;
-
-            //check start
-            if (start < 0)
-                throw new Exception("start must be a positive value");
-
-            //check window size
-            if (_window == null || _window.Length - start < windowSize)
-                throw new Exception("the given data array must not be a null value and must contain data for one window");
-
-            //just copy to buffer
-            for (int j = 0; j < windowSize; j++)
-                buffer[j] = _window[j + start];
-
-            //perform power fft
-            //samples.Transform(buffer, null); old
-            Fourier.Forward(buffer, null,FourierOptions.NoScaling);
-
-            return null;
+        /// Convert from mel frequency to linear frequency.
+        /// </summary>
+        /// <param name="inputFreq">the input frequency in linear scale</param>
+        /// <returns>the frequency in a mel scale</returns>
+        private double LinToMelFreq(double inputFreq) {
+            return (2595.0 * (Math.Log(1.0 + inputFreq / 700.0) / Math.Log(10.0)));
         }
 
-        /*
-        Using a 2khz sampeling rate and making the signal 1000 samples in lenght.
-        This means that the signal will last for 0,5seconds (1000/2000) and show 100 cycels
-
-        NOTE: the FFT "bidirectional bandwith" is the same as the sampling frequency or, 2kHz. 
-              Since there are 1000 samples, each sample represents 2kHz / 1kHz aka 2Hz. 
-
-        The max frequency we can detect is 1/2 of the sampleing rate (1kHz), and that appears in
-        the middle of the chart/ spectrum of those 1000 samples. Therefor the top 500 samples '
-        are useless.
-
-         */
-        private void PlotWaveform(int secondHarm, int thirdHarm, double secondPH, double thiridPH)
-        {
-
-            double[] fundamental = Generate.Sinusoidal(numSamples, sampleRate, 60, 10.0);
-            double[] second = Generate.Sinusoidal(numSamples, sampleRate, 120, secondHarm, 0.0, secondPH);
-            double[] third = Generate.Sinusoidal(numSamples, sampleRate, 180, thirdHarm, 0.0, thiridPH);
-
-
-            //Add waveforms together to create the composite waveform
-            for (int i = 0; i < numSamples; i++)
-            {
-                samples[i] = new Complex(fundamental[i] + second[i] + third[i], 0);
-            }
+        /// <summary>
+        /// Convert from linear frequency to mel frequency.
+        /// </summary>
+        /// <param name="inputFreq">the input frequency in mel scale</param>
+        /// <returns>the frequency in a linear scale</returns>
+        private double MelToLinFreq(double inputFreq) {
+            return (700.0 * (Math.Pow(10.0, (inputFreq / 2595.0)) - 1.0));
         }
     }
 }
