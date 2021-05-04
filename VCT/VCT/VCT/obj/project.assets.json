@@ -2,15 +2,6 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.1": {
-      "MathNet.Numerics/4.15.0": {
-        "type": "package",
-        "compile": {
-          "lib/netstandard2.0/MathNet.Numerics.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/MathNet.Numerics.dll": {}
-        }
-      },
       "Microsoft.NETCore.Platforms/3.1.0": {
         "type": "package",
         "compile": {
@@ -183,44 +174,10 @@
         "build": {
           "build/Vosk.targets": {}
         }
-      },
-      "VoskEngine/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v3.1",
-        "dependencies": {
-          "MathNet.Numerics": "4.15.0",
-          "Vosk": "0.3.21"
-        },
-        "compile": {
-          "bin/placeholder/VoskEngine.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/VoskEngine.dll": {}
-        }
       }
     }
   },
   "libraries": {
-    "MathNet.Numerics/4.15.0": {
-      "sha512": "cP4QgPPiU7boMyL8npvuQyVGVYUd/JQY1AWa+Wl2f//fuJN40qwt9ABRazunZIcDLHg3SSlgD/e+3Lnp69jNTg==",
-      "type": "package",
-      "path": "mathnet.numerics/4.15.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "icon.png",
-        "lib/net40/MathNet.Numerics.dll",
-        "lib/net40/MathNet.Numerics.xml",
-        "lib/net461/MathNet.Numerics.dll",
-        "lib/net461/MathNet.Numerics.xml",
-        "lib/netstandard1.3/MathNet.Numerics.dll",
-        "lib/netstandard1.3/MathNet.Numerics.xml",
-        "lib/netstandard2.0/MathNet.Numerics.dll",
-        "lib/netstandard2.0/MathNet.Numerics.xml",
-        "mathnet.numerics.4.15.0.nupkg.sha512",
-        "mathnet.numerics.nuspec"
-      ]
-    },
     "Microsoft.NETCore.Platforms/3.1.0": {
       "sha512": "z7aeg8oHln2CuNulfhiLYxCVMPEwBl3rzicjvIX+4sUuCwvXw5oXQEtbiU2c0z4qYL5L3Kmx0mMA/+t/SbY67w==",
       "type": "package",
@@ -499,39 +456,33 @@
         "vosk.0.3.21.nupkg.sha512",
         "vosk.nuspec"
       ]
-    },
-    "VoskEngine/1.0.0": {
-      "type": "project",
-      "path": "../../../VoskEngine/VoskEngine/VoskEngine.csproj",
-      "msbuildProject": "../../../VoskEngine/VoskEngine/VoskEngine.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "C:\\Users\\Flugan\\Ex-VoiceCon\\VoskEngine\\VoskEngine\\VoskEngine.csproj",
       "NAudio >= 2.0.0",
-      "Vosk >= 0.3.21",
-      "VoskEngine >= 1.0.0"
+      "Vosk >= 0.3.21"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\jasmi\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Flugan\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jasmi\\source\\repos\\Ex-VoiceCon\\VCT\\VCT\\VCT\\VCT.csproj",
+      "projectUniqueName": "C:\\Users\\Flugan\\Ex-VoiceCon\\VCT\\VCT\\VCT\\VCT.csproj",
       "projectName": "VCT",
-      "projectPath": "C:\\Users\\jasmi\\source\\repos\\Ex-VoiceCon\\VCT\\VCT\\VCT\\VCT.csproj",
-      "packagesPath": "C:\\Users\\jasmi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jasmi\\source\\repos\\Ex-VoiceCon\\VCT\\VCT\\VCT\\obj\\",
+      "projectPath": "C:\\Users\\Flugan\\Ex-VoiceCon\\VCT\\VCT\\VCT\\VCT.csproj",
+      "packagesPath": "C:\\Users\\Flugan\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Flugan\\Ex-VoiceCon\\VCT\\VCT\\VCT\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\jasmi\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Flugan\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -543,10 +494,9 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\jasmi\\source\\repos\\Ex-VoiceCon\\VoskEngine\\VoskEngine\\VoskEngine.csproj": {
-              "projectPath": "C:\\Users\\jasmi\\source\\repos\\Ex-VoiceCon\\VoskEngine\\VoskEngine\\VoskEngine.csproj"
+            "C:\\Users\\Flugan\\Ex-VoiceCon\\VoskEngine\\VoskEngine\\VoskEngine.csproj": {
+              "projectPath": "C:\\Users\\Flugan\\Ex-VoiceCon\\VoskEngine\\VoskEngine\\VoskEngine.csproj"
             }
           }
         }
@@ -559,7 +509,6 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
-        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "NAudio": {
             "target": "Package",
@@ -584,12 +533,26 @@
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           },
+          "Microsoft.WindowsDesktop.App.WindowsForms": {
+            "privateAssets": "none"
+          },
           "Microsoft.WindowsDesktop.App.WPF": {
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.408\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1104",
+      "level": "Error",
+      "message": "Unable to find project 'C:\\Users\\Flugan\\Ex-VoiceCon\\VoskEngine\\VoskEngine\\VoskEngine.csproj'. Check that the project reference is valid and that the project file exists.",
+      "libraryId": "C:\\Users\\Flugan\\Ex-VoiceCon\\VoskEngine\\VoskEngine\\VoskEngine.csproj",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    }
+  ]
 }

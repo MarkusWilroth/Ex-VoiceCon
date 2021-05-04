@@ -1,22 +1,31 @@
 {
   "version": 2,
-  "dgSpecHash": "vdlgD1AvmfE7qSrQvKpqGbO2V8G0NSH1lyvztkFCz4mfaK7ZjsqaiNeNRpFr/ULlKBe2sw7o7OU9gjA3JLm8qA==",
-  "success": true,
-  "projectFilePath": "C:\\Users\\jasmi\\source\\repos\\Ex-VoiceCon\\VCT\\VCT\\VCT\\VCT.csproj",
+  "dgSpecHash": "D1dlEn0PRImbe7cl7fh054Rr2snhlv/bRdRrW0H7OXfOwY6R2mII6eiJynT2j6hqln1Wje6NPoHHgbTBTF5/Kg==",
+  "success": false,
+  "projectFilePath": "C:\\Users\\Flugan\\Ex-VoiceCon\\VCT\\VCT\\VCT\\VCT.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\jasmi\\.nuget\\packages\\mathnet.numerics\\4.15.0\\mathnet.numerics.4.15.0.nupkg.sha512",
-    "C:\\Users\\jasmi\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
-    "C:\\Users\\jasmi\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
-    "C:\\Users\\jasmi\\.nuget\\packages\\naudio\\2.0.0\\naudio.2.0.0.nupkg.sha512",
-    "C:\\Users\\jasmi\\.nuget\\packages\\naudio.asio\\2.0.0\\naudio.asio.2.0.0.nupkg.sha512",
-    "C:\\Users\\jasmi\\.nuget\\packages\\naudio.core\\2.0.0\\naudio.core.2.0.0.nupkg.sha512",
-    "C:\\Users\\jasmi\\.nuget\\packages\\naudio.midi\\2.0.0\\naudio.midi.2.0.0.nupkg.sha512",
-    "C:\\Users\\jasmi\\.nuget\\packages\\naudio.wasapi\\2.0.0\\naudio.wasapi.2.0.0.nupkg.sha512",
-    "C:\\Users\\jasmi\\.nuget\\packages\\naudio.winforms\\2.0.0\\naudio.winforms.2.0.0.nupkg.sha512",
-    "C:\\Users\\jasmi\\.nuget\\packages\\naudio.winmm\\2.0.0\\naudio.winmm.2.0.0.nupkg.sha512",
-    "C:\\Users\\jasmi\\.nuget\\packages\\system.security.accesscontrol\\4.7.0\\system.security.accesscontrol.4.7.0.nupkg.sha512",
-    "C:\\Users\\jasmi\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512",
-    "C:\\Users\\jasmi\\.nuget\\packages\\vosk\\0.3.21\\vosk.0.3.21.nupkg.sha512"
+    "C:\\Users\\Flugan\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
+    "C:\\Users\\Flugan\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
+    "C:\\Users\\Flugan\\.nuget\\packages\\naudio\\2.0.0\\naudio.2.0.0.nupkg.sha512",
+    "C:\\Users\\Flugan\\.nuget\\packages\\naudio.asio\\2.0.0\\naudio.asio.2.0.0.nupkg.sha512",
+    "C:\\Users\\Flugan\\.nuget\\packages\\naudio.core\\2.0.0\\naudio.core.2.0.0.nupkg.sha512",
+    "C:\\Users\\Flugan\\.nuget\\packages\\naudio.midi\\2.0.0\\naudio.midi.2.0.0.nupkg.sha512",
+    "C:\\Users\\Flugan\\.nuget\\packages\\naudio.wasapi\\2.0.0\\naudio.wasapi.2.0.0.nupkg.sha512",
+    "C:\\Users\\Flugan\\.nuget\\packages\\naudio.winforms\\2.0.0\\naudio.winforms.2.0.0.nupkg.sha512",
+    "C:\\Users\\Flugan\\.nuget\\packages\\naudio.winmm\\2.0.0\\naudio.winmm.2.0.0.nupkg.sha512",
+    "C:\\Users\\Flugan\\.nuget\\packages\\system.security.accesscontrol\\4.7.0\\system.security.accesscontrol.4.7.0.nupkg.sha512",
+    "C:\\Users\\Flugan\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512",
+    "C:\\Users\\Flugan\\.nuget\\packages\\vosk\\0.3.21\\vosk.0.3.21.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1104",
+      "level": "Error",
+      "message": "Unable to find project 'C:\\Users\\Flugan\\Ex-VoiceCon\\VoskEngine\\VoskEngine\\VoskEngine.csproj'. Check that the project reference is valid and that the project file exists.",
+      "libraryId": "C:\\Users\\Flugan\\Ex-VoiceCon\\VoskEngine\\VoskEngine\\VoskEngine.csproj",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    }
+  ]
 }
