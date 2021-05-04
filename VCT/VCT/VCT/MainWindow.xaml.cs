@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -27,14 +28,14 @@ namespace VCT {
 
         private WrapPanel[] wrapPanelArr; //Används för att inaktivera/aktivera commandBox (Text, title, tag, train, delete)
         private Label[] lbTitleArr, lbTextArr, lbTagArr; //Används för att ändra värderna i UI
+        private string path;
 
         public MainWindow() {
             InitializeComponent();
 
             SetWrapPanels(); //Gör så att wrapPanels får sina värden (Så att man enkelt kan ändra deras värden i en for-loop) och att alla börjar som dolda
 
-            voiceDataList = new List<VoiceData>();
-            Test();
+            NewProject();
             //Load();
         }
 
@@ -80,6 +81,11 @@ namespace VCT {
             }
         }
 
+        private void NewProject() {
+            voiceDataList = new List<VoiceData>();
+            UpdateCommand();
+        }
+
         private void Test() {
             //VoiceData voiceData = new VoiceData("TestTitle", "TestText");
             //voiceDataList.Add(voiceData);
@@ -121,16 +127,24 @@ namespace VCT {
 
         }
 
-        private void Save() {
-            string path = "";
+        private void SaveAs() {
+            path = "";
             SaveFileDialog sfd = new SaveFileDialog();
             if (sfd.ShowDialog() == true) {
                 path = sfd.FileName;
+                if (path != null) {
+                    Save();
+                }
             }
+        }
+
+        private void Save() {
             SaveSystem.Save(path, voiceDataList);
         }
 
-        private void Load() {
+        
+
+        private void Open() {
             string path = "";
             OpenFileDialog ofd = new OpenFileDialog();
             if (ofd.ShowDialog() == true) {
@@ -148,5 +162,31 @@ namespace VCT {
             AddWindow addWin = new AddWindow(this);
             addWin.Show();
         }
+
+        #region Menu
+        private void NewProject_Click(object sender, RoutedEventArgs e) {
+
+        }
+
+        private void OpenFile_Click(object sender, RoutedEventArgs e) {
+            Open();
+        }
+
+        private void Save_Click(object sender, RoutedEventArgs e) {
+            if (path != null) {
+                Save();
+            } else {
+                SaveAs();
+            }
+        }
+
+        private void SaveAs_Click(object sender, RoutedEventArgs e) {
+            SaveAs();
+        }
+
+        private void Exit_Click(object sender, RoutedEventArgs e) {
+            Application.Current.Shutdown();
+        }
+        #endregion
     }
 }

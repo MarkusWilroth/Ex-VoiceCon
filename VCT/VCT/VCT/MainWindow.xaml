@@ -6,7 +6,17 @@
         xmlns:local="clr-namespace:VCT"
         mc:Ignorable="d"
         Title="VCT" Height="450" Width="800">
+    
     <Grid x:Name="Grid" Background="#FF1B4632">
+        <Menu IsMainMenu="True" Margin="0,0,0,415">
+            <MenuItem Header="_File">
+                <MenuItem x:Name="NewProject" Header="_New Project" InputGestureText="Ctrl+N" Click="NewProject_Click"></MenuItem>
+                <MenuItem x:Name="OpenFile" Header="_Open" InputGestureText="Ctrl+O" Click="OpenFile_Click"></MenuItem>
+                <MenuItem x:Name="Save" Header="_Save" InputGestureText="Ctrl+S" Click="Save_Click"></MenuItem>
+                <MenuItem x:Name="SaveAs" Header="_Save As ..." InputGestureText="Alt+S" Click="SaveAs_Click"></MenuItem>
+                <MenuItem x:Name="Exit" Header="_Exit" InputGestureText="Alt+X" Click="Exit_Click"></MenuItem>
+            </MenuItem>
+        </Menu>
         <Label x:Name="LblTitle" Content="Voice Controller Tool" Margin="197,10,204,0" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="40" FontWeight="Bold" Foreground="White"/>
         <Button x:Name="BtnAdd" Content="Add" HorizontalAlignment="Left" Margin="32,80,0,0" VerticalAlignment="Top" Width="76" FontFamily="Times New Roman" FontSize="30" Click="BtnAdd_Click" BorderThickness="2" Background="#FF2F8160" BorderBrush="#FF99E450" Foreground="White"/>
         <ScrollBar x:Name="ScbMain" HorizontalAlignment="Left" Margin="10,126,0,0" VerticalAlignment="Top" Height="268" BorderBrush="#FF99E450" Background="#FF2F8160" Foreground="White" BorderThickness="2"/>
@@ -15,6 +25,7 @@
 
         <Image x:Name="ImgComParent" HorizontalAlignment="Left" Margin="30,120,0,0" Width="740" IsEnabled="False" Source="/Sprites/VCT-CommandBox.png" Height="285" VerticalAlignment="Top"/>
 
+        
         <WrapPanel x:Name="WPCom1" Margin="35,125,0,0" Height="40" Width="730" HorizontalAlignment="Left" VerticalAlignment="Top" >
             <Image x:Name="Commanad1" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="675" IsEnabled="False" Source="/Sprites/SmallComBox.png"/>
             <Label x:Name="lbTitle1" Margin="-675, 0,470,0" Content="Title Test" FontFamily="Times New Roman" Foreground="White" FontSize="20" HorizontalContentAlignment="Center"/>
