@@ -514,24 +514,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\jasmi\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Flugan\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jasmi\\source\\repos\\Ex-VoiceCon\\VCT\\VCT\\VCT\\VCT.csproj",
+      "projectUniqueName": "C:\\Users\\Flugan\\Ex-VoiceCon\\VCT\\VCT\\VCT\\VCT.csproj",
       "projectName": "VCT",
-      "projectPath": "C:\\Users\\jasmi\\source\\repos\\Ex-VoiceCon\\VCT\\VCT\\VCT\\VCT.csproj",
-      "packagesPath": "C:\\Users\\jasmi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jasmi\\source\\repos\\Ex-VoiceCon\\VCT\\VCT\\VCT\\obj\\",
+      "projectPath": "C:\\Users\\Flugan\\Ex-VoiceCon\\VCT\\VCT\\VCT\\VCT.csproj",
+      "packagesPath": "C:\\Users\\Flugan\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Flugan\\Ex-VoiceCon\\VCT\\VCT\\VCT\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\jasmi\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Flugan\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -543,10 +542,9 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\jasmi\\source\\repos\\Ex-VoiceCon\\VoskEngine\\VoskEngine\\VoskEngine.csproj": {
-              "projectPath": "C:\\Users\\jasmi\\source\\repos\\Ex-VoiceCon\\VoskEngine\\VoskEngine\\VoskEngine.csproj"
+            "C:\\Users\\Flugan\\Ex-VoiceCon\\VoskEngine\\VoskEngine\\VoskEngine.csproj": {
+              "projectPath": "C:\\Users\\Flugan\\Ex-VoiceCon\\VoskEngine\\VoskEngine\\VoskEngine.csproj"
             }
           }
         }
@@ -559,7 +557,6 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
-        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "NAudio": {
             "target": "Package",
@@ -584,11 +581,14 @@
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           },
+          "Microsoft.WindowsDesktop.App.WindowsForms": {
+            "privateAssets": "none"
+          },
           "Microsoft.WindowsDesktop.App.WPF": {
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.408\\RuntimeIdentifierGraph.json"
       }
     }
   }

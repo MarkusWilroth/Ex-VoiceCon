@@ -10,11 +10,11 @@
     <Grid x:Name="Grid" Background="#FF1B4632">
         <Menu IsMainMenu="True" Margin="0,0,0,415">
             <MenuItem Header="_File">
-                <MenuItem x:Name="NewProject" Header="_New Project" InputGestureText="Ctrl+N" Click="NewProject_Click"></MenuItem>
-                <MenuItem x:Name="OpenFile" Header="_Open" InputGestureText="Ctrl+O" Click="OpenFile_Click"></MenuItem>
-                <MenuItem x:Name="Save" Header="_Save" InputGestureText="Ctrl+S" Click="Save_Click"></MenuItem>
-                <MenuItem x:Name="SaveAs" Header="_Save As ..." InputGestureText="Alt+S" Click="SaveAs_Click"></MenuItem>
-                <MenuItem x:Name="Exit" Header="_Exit" InputGestureText="Alt+X" Click="Exit_Click"></MenuItem>
+                <MenuItem x:Name="MnuNewProject" Header="_New Project" InputGestureText="Ctrl+N" Click="NewProject_Click"></MenuItem>
+                <MenuItem x:Name="MnuOpenFile" Header="_Open" InputGestureText="Ctrl+O" Click="OpenFile_Click"></MenuItem>
+                <MenuItem x:Name="MnuSave" Header="_Save" InputGestureText="Ctrl+S" Click="Save_Click"></MenuItem>
+                <MenuItem x:Name="MnuSaveAs" Header="_Save As ..." InputGestureText="Alt+S" Click="SaveAs_Click"></MenuItem>
+                <MenuItem x:Name="MnuExit" Header="_Exit" InputGestureText="Alt+X" Click="Exit_Click"></MenuItem>
             </MenuItem>
         </Menu>
         <Label x:Name="LblTitle" Content="Voice Controller Tool" Margin="197,10,204,0" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="40" FontWeight="Bold" Foreground="White"/>
