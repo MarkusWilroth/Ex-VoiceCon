@@ -6,8 +6,8 @@ namespace VoskEngine
 {
     class Matrix
     {
-        public int Rows { get; private set; }
-        public int Colums { get; private set; }
+        public int Rows {get { return rowCount; } set {rowCount = value; }}
+        public int Colums { get { return columnCount; } set { columnCount = value; }}
 
 
         private int rowCount;
