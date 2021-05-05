@@ -15,7 +15,7 @@ namespace VoskEngine
         public float fitness = 0;
 
 
-        public NeuralNetwork(int[] _layers)
+        public NeuralNetwork(int[] _layers) //
         {
             this.layers = new int[_layers.Length];
             for (int i = 0; i < _layers.Length; i++)
