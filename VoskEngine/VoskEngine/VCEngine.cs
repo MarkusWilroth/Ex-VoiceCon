@@ -9,7 +9,6 @@ namespace VoskEngine
 
         private static Model model;
         private MFCC mfcc;
-
         public static void Main(string[] args)
         {
             Vosk.Vosk.SetLogLevel(0);
@@ -21,7 +20,7 @@ namespace VoskEngine
             var path = Path.Combine(projecDir.FullName, filePath);
 
             model = new Model(path2);
-
+            
             
             //DemoBytes(model); //to test Vosk
         }
@@ -66,6 +65,7 @@ namespace VoskEngine
         public void ValidateKeyphrase(MemoryStream stream, int sampleRate, int numbOfChannels)
         {
             VoskRecognizer rec = new VoskRecognizer(model, sampleRate);
+        
 
             byte[] buffer = new byte[4096];
             int bytesRead;
@@ -83,10 +83,11 @@ namespace VoskEngine
                     detectedText = rec.PartialResult();
                 }
             }
+            NeuralNetwork agent = new NeuralNetwork(buffer);
 
             //minFreq
             mfcc = new MFCC(sampleRate, 512, 20, true, 20.0, 16000.0, 40); //windwowsize 32msek = 512 samples 16msek = 256 samples. numberOfCoefficients should be between 20-40 since thats where human speech mostly exists
-
+            
             //If validation is true, then train AI 
         }
 

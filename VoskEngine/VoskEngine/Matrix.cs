@@ -146,6 +146,10 @@ namespace VoskEngine
             return this;
         }
 
+        /// <summary>
+        /// Returns the matrix values in a double jagged array of this matrix
+        /// </summary>
+        /// <returns></returns>
         public double[][] GetArray() {
             return matrixValues;
         }

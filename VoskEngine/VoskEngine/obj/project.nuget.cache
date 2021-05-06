@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "GQV1DRz5+MgY6X7cqqQKbG2kBw0brmjUM1A9fgdiFWtCg+SVcgMpgCxIc8Rat8Hg/lwBAb6jwqSDPZXd5k58Ew==",
+  "dgSpecHash": "wKSwqkKJUytlr3B9I6S5MgYz1Erxb4eT5Ks/HyEHXy9YKPeXqbu1VTKpDfqnQN78YnNEMhsM78ZunBDSNMukiw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Flugan\\Ex-VoiceCon\\VoskEngine\\VoskEngine\\VoskEngine.csproj",
+  "projectFilePath": "C:\\Users\\jasmi\\source\\repos\\Ex-VoiceCon\\VoskEngine\\VoskEngine\\VoskEngine.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Flugan\\.nuget\\packages\\mathnet.numerics\\4.15.0\\mathnet.numerics.4.15.0.nupkg.sha512",
-    "C:\\Users\\Flugan\\.nuget\\packages\\vosk\\0.3.21\\vosk.0.3.21.nupkg.sha512"
+    "C:\\Users\\jasmi\\.nuget\\packages\\mathnet.numerics\\4.15.0\\mathnet.numerics.4.15.0.nupkg.sha512",
+    "C:\\Users\\jasmi\\.nuget\\packages\\vosk\\0.3.21\\vosk.0.3.21.nupkg.sha512"
   ],
   "logs": []
 }

@@ -1,23 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Flugan\\Ex-VoiceCon\\VoskEngine\\VoskEngine\\VoskEngine.csproj": {}
+    "C:\\Users\\jasmi\\source\\repos\\Ex-VoiceCon\\VoskEngine\\VoskEngine\\VoskEngine.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Flugan\\Ex-VoiceCon\\VoskEngine\\VoskEngine\\VoskEngine.csproj": {
+    "C:\\Users\\jasmi\\source\\repos\\Ex-VoiceCon\\VoskEngine\\VoskEngine\\VoskEngine.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Flugan\\Ex-VoiceCon\\VoskEngine\\VoskEngine\\VoskEngine.csproj",
+        "projectUniqueName": "C:\\Users\\jasmi\\source\\repos\\Ex-VoiceCon\\VoskEngine\\VoskEngine\\VoskEngine.csproj",
         "projectName": "VoskEngine",
-        "projectPath": "C:\\Users\\Flugan\\Ex-VoiceCon\\VoskEngine\\VoskEngine\\VoskEngine.csproj",
-        "packagesPath": "C:\\Users\\Flugan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Flugan\\Ex-VoiceCon\\VoskEngine\\VoskEngine\\obj\\",
+        "projectPath": "C:\\Users\\jasmi\\source\\repos\\Ex-VoiceCon\\VoskEngine\\VoskEngine\\VoskEngine.csproj",
+        "packagesPath": "C:\\Users\\jasmi\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jasmi\\source\\repos\\Ex-VoiceCon\\VoskEngine\\VoskEngine\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Flugan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\jasmi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -29,6 +30,7 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -40,6 +42,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "MathNet.Numerics": {
               "target": "Package",
@@ -65,7 +68,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.408\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

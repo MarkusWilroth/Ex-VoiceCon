@@ -14,6 +14,30 @@ namespace VoskEngine
 
         public float fitness = 0;
 
+        public double ihWeight00;
+        public double ihWeight01;
+        public double ihWeight10;
+        public double ihWeight11;
+        public double ihBias0;
+        public double ihBias1;
+
+        public double ihSum0;
+        public double ihSum1;
+        public double ihResult0;
+        public double ihResult1;
+
+        public double hoWeight00;
+        public double hoWeight01;
+        public double hoWeight10;
+        public double hoWeight11;
+        public double hoBias0;
+        public double hoBias1;
+
+        public double hoSum0;
+        public double hoSum1;
+        public double hoResult0;
+        public double hoResult1;
+
 
         public NeuralNetwork(int[] _layers) //
         {
@@ -83,4 +107,38 @@ namespace VoskEngine
             weights = weightList.ToArray();
         }
     }
+
+
+    //holds the activation function (Softmax) for the output layer
+    /*   f(z)i = e^zi / Σ(k->k)=1ezk   */
+    //Sets the scale and maxvalue based on which part of the output layers is calling
+    public double Activation(double x, string layer)
+    {
+        float result;
+
+        double max = double.MinValue;
+        //if (layer == "ih")
+        //    max = (ihSum0 > ihSum1) ? ihSum0 : ihSum1;
+        //else if (layer == "ho")
+        //    max = (hoSum0 > hoSum1) ? hoSum0 : hoSum1;
+
+        //double scale = 0.0;
+        //if (layer == "ih")
+        //    scale = Math.Exp(ihSum0 - max) + Math.Exp(ihSum1 - max);
+        //else if (layer == "ho")
+        //    scale = Math.Exp(hoSum0 - max) + Math.Exp(hoSum1 - max);
+
+        //return Math.Exp(x - max) / scale;
+
+    }
+
+    //holds the activation function (Relu) for the hidden layer 
+    /*    f(z)i=max(0,zi)    */
+    public float HiddenActivation()
+    {
+        float result;
+
+
+        return 0.0f; //fix
+    } 
 }
