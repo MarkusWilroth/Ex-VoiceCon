@@ -163,7 +163,7 @@ namespace VoskEngine
                 matrix[i - 1] = filter;
             }           
             //return the filter bank
-            return new Matrix(matrix, numberOfFilters, (windowSize / 2) + 1); //bygg matrix classen som kan hantera att man skickar in martrisvektorerna och storleken
+            return new Matrix(matrix, numberOfFilters, (windowSize / 2) + 1); 
         }
 
         /// <summary>
@@ -209,11 +209,17 @@ namespace VoskEngine
             return result;
         }
 
-        //input - double[] input data is an array of samples in db SoundPreassureLevel (backgrund noise),
-        //must be a multiple of the hop size, must not be a null value.
-        //Hop siize = number of samples between each successive FFT window
-        //double[][] an array of arrays contains a double array of Sone value for each window.
-        //AKA the aucustion value or percieved loudness
+
+
+        /// <summary>
+        /// Performs the transformation of the input data to MFCCs.
+        /// This is done by splitting the given data into windows and processing
+        /// each of these windows with processWindow().
+        /// </summary>
+        /// <param name="input">double[] input data is an array of samples in db SoundPreassureLevel (backgrund noise), 
+        /// must be a multiple of the hop size, must not be a null value</param>
+        /// Hop size = number of samples between each successive FFT window
+        /// <returns>double[][] an array of arrays contains a double array of Sone value
         public double[][] Process(double[] input)
         {
             //check for null
@@ -256,15 +262,13 @@ namespace VoskEngine
         /// (1) normalized power fft with hanning window function
         /// (2) convert to Mel scale by applying a mel filter bank
         /// (3) convertion to db<br>
-        /// (4) finally a DCT is performed to get the mfcc<br>
+        /// (4) finally a DCT is performed to get the mfcc
         /// 
-        /// This process is mathematical identical with the process described in [1].
         /// </summary>
-        /// <param name="_window">double[] data to be converted, must contain enough data for
-        ///                        one window</param>
+        /// <param name="_window">double[] data to be converted, must contain enough data for one window</param>
         /// <param name="start">int start index of the window data</param>
         /// <returns>double[] the window representation in Sone</returns>
-        public double[] ProcessWindow(double[] _window, int start)
+        private double[] ProcessWindow(double[] _window, int start)
         {
             //number of unique coefficients, and the rest are symmetrically redundant
             int fftSize = (windowSize / 2) + 1;
@@ -312,7 +316,7 @@ namespace VoskEngine
             return samples.Length; //
         }
 
-        public Matrix GetDCTMatrix()
+        private Matrix GetDCTMatrix()
         {
             //compute constants
             double k = Math.PI / numberOfFilters;

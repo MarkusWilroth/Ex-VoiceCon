@@ -1,6 +1,7 @@
 ﻿using System;
 using Vosk;
 using System.IO;
+using System.Collections.Generic;
 
 namespace VoskEngine
 {
@@ -65,16 +66,19 @@ namespace VoskEngine
         public void ValidateKeyphrase(MemoryStream stream, int sampleRate, int numbOfChannels)
         {
             VoskRecognizer rec = new VoskRecognizer(model, sampleRate);
-        
+            double[][] coefficients;
 
-            byte[] buffer = new byte[4096];
+            byte[] byteBuffer = new byte[4096];
+            double[] buffer = new double[stream.Length];
             int bytesRead;
+            int count = 0;
 
+          
             string detectedText;
 
-            while ((bytesRead = stream.Read(buffer, 0, buffer.Length)) > 0)
+            while ((bytesRead = stream.Read(byteBuffer, 0, byteBuffer.Length)) > 0)
             {
-                if (rec.AcceptWaveform(buffer, bytesRead)) //check to see if basic detection goes through
+                if (rec.AcceptWaveform(byteBuffer, bytesRead)) //check to see if basic detection goes through
                 {
                     detectedText = rec.Result();
                 }
@@ -82,13 +86,32 @@ namespace VoskEngine
                 {
                     detectedText = rec.PartialResult();
                 }
+
+                buffer[count] = BitConverter.ToInt16(byteBuffer, 0);
             }
-            NeuralNetwork agent = new NeuralNetwork(buffer);
+            
 
             //minFreq
             mfcc = new MFCC(sampleRate, 512, 20, true, 20.0, 16000.0, 40); //windwowsize 32msek = 512 samples 16msek = 256 samples. numberOfCoefficients should be between 20-40 since thats where human speech mostly exists
-            
-            //If validation is true, then train AI 
+            coefficients = mfcc.Process(buffer); //Coefficients as it is right now showes the total amount of coefficients found in the detected soundstream
+            //double[] resultArray = new double[coefficients.Length];
+
+
+            //foreach (double[] subArray in coefficients)
+            //{
+            //    for (int i = 0; i < subArray.Length; i++)
+            //    {
+            //        for (int j = resultArray.Length; j < resultArray.Length + subArray.Length; j++)
+            //        {
+            //            resultArray[j] = subArray[i];
+            //        }
+            //    }
+            //}
+
+            //If validation is true, then train AI
+            NeuralNetwork agent = new NeuralNetwork(coefficients);//Send in how many layers
+            agent.FeedForward(/*single word found in detected word*/);  //this is done when the words have been "accepted" as detected. We feed the agent that then uses it to train
+            //
         }
 
         public void TrainSet()
@@ -96,5 +119,6 @@ namespace VoskEngine
             
         }
 
+   
     }
 }

@@ -12,7 +12,7 @@ namespace VoskEngine
 
         private int rowCount;
         private int columnCount;
-        double[][] matrixValues; //prolly rename?
+        private double[][] matrixValues; //prolly rename?
         Matrix subMatrix;
 
         public Matrix(int rows, int columns)//Construct an "rows" by "columns" matrix filled with 0.0
