@@ -58,15 +58,13 @@ namespace VoskEngine
         {
             VoskRecognizer rec = new VoskRecognizer(model, 16000.0f); //16000hz = 16bit sample rate
 
-          
-            
-            
+
         }
 
         public void ValidateKeyphrase(MemoryStream stream, int sampleRate, int numbOfChannels)
         {
             VoskRecognizer rec = new VoskRecognizer(model, sampleRate);
-            double[][] coefficients;
+            double[][] coefficientMatrix;
 
             byte[] byteBuffer = new byte[4096];
             double[] buffer = new double[stream.Length];
@@ -93,32 +91,18 @@ namespace VoskEngine
 
             //minFreq
             mfcc = new MFCC(sampleRate, 512, 20, true, 20.0, 16000.0, 40); //windwowsize 32msek = 512 samples 16msek = 256 samples. numberOfCoefficients should be between 20-40 since thats where human speech mostly exists
-            coefficients = mfcc.Process(buffer); //Coefficients as it is right now showes the total amount of coefficients found in the detected soundstream
-            //double[] resultArray = new double[coefficients.Length];
-
-
-            //foreach (double[] subArray in coefficients)
-            //{
-            //    for (int i = 0; i < subArray.Length; i++)
-            //    {
-            //        for (int j = resultArray.Length; j < resultArray.Length + subArray.Length; j++)
-            //        {
-            //            resultArray[j] = subArray[i];
-            //        }
-            //    }
-            //}
+            mfcc.Process(buffer);
+            coefficientMatrix = mfcc.dctMatrix.GetArray(); //Coefficients as it is right now showes the total amount of coefficients found in the detected soundstream
 
             //If validation is true, then train AI
-            NeuralNetwork agent = new NeuralNetwork(coefficients);//Send in how many layers
-            agent.FeedForward(/*single word found in detected word*/);  //this is done when the words have been "accepted" as detected. We feed the agent that then uses it to train
-            //
+            NeuralNetwork agent = new NeuralNetwork(coefficientMatrix);//Send in how many layers
+       
+            foreach (var coefficiets in coefficientMatrix)
+            {
+                agent.FeedForward(coefficiets);  //this is done when the words have been "accepted" as detected. We feed the agent that then uses it to train
+            }
         }
 
-        public void TrainSet()
-        {
-            
-        }
-
-   
+     
     }
 }
