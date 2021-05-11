@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jasmi\\source\\repos\\Ex-VoiceCon\\VCT\\VCTUtility\\VCTUtility\\VCTUtility.csproj": {}
+    "D:\\Repos\\Ex-VoiceCon\\VCT\\VCTUtility\\VCTUtility\\VCTUtility.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jasmi\\source\\repos\\Ex-VoiceCon\\VCT\\VCTUtility\\VCTUtility\\VCTUtility.csproj": {
+    "D:\\Repos\\Ex-VoiceCon\\VCT\\VCTUtility\\VCTUtility\\VCTUtility.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jasmi\\source\\repos\\Ex-VoiceCon\\VCT\\VCTUtility\\VCTUtility\\VCTUtility.csproj",
+        "projectUniqueName": "D:\\Repos\\Ex-VoiceCon\\VCT\\VCTUtility\\VCTUtility\\VCTUtility.csproj",
         "projectName": "VCTUtility",
-        "projectPath": "C:\\Users\\jasmi\\source\\repos\\Ex-VoiceCon\\VCT\\VCTUtility\\VCTUtility\\VCTUtility.csproj",
-        "packagesPath": "C:\\Users\\jasmi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jasmi\\source\\repos\\Ex-VoiceCon\\VCT\\VCTUtility\\VCTUtility\\obj\\",
+        "projectPath": "D:\\Repos\\Ex-VoiceCon\\VCT\\VCTUtility\\VCTUtility\\VCTUtility.csproj",
+        "packagesPath": "C:\\Users\\heliu\\.nuget\\packages\\",
+        "outputPath": "D:\\Repos\\Ex-VoiceCon\\VCT\\VCTUtility\\VCTUtility\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\jasmi\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\heliu\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -31,7 +27,11 @@
         "frameworks": {
           "netstandard2.0": {
             "targetAlias": "netstandard2.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "D:\\Repos\\Ex-VoiceCon\\VoskEngine\\VoskEngine\\VoskEngine.csproj": {
+                "projectPath": "D:\\Repos\\Ex-VoiceCon\\VoskEngine\\VoskEngine\\VoskEngine.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -73,6 +73,70 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Repos\\Ex-VoiceCon\\VoskEngine\\VoskEngine\\VoskEngine.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Repos\\Ex-VoiceCon\\VoskEngine\\VoskEngine\\VoskEngine.csproj",
+        "projectName": "VoskEngine",
+        "projectPath": "D:\\Repos\\Ex-VoiceCon\\VoskEngine\\VoskEngine\\VoskEngine.csproj",
+        "packagesPath": "C:\\Users\\heliu\\.nuget\\packages\\",
+        "outputPath": "D:\\Repos\\Ex-VoiceCon\\VoskEngine\\VoskEngine\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\heliu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "MathNet.Numerics": {
+              "target": "Package",
+              "version": "[4.15.0, )"
+            },
+            "Vosk": {
+              "target": "Package",
+              "version": "[0.3.21, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
         }
       }

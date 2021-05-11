@@ -12,7 +12,8 @@
           "MathNet.Numerics": "4.15.0",
           "NAudio": "2.0.0",
           "NETStandard.Library": "2.0.3",
-          "Vosk": "0.3.21"
+          "Vosk": "0.3.21",
+          "VoskEngine": "1.0.0"
         },
         "runtime": {
           "VCTUtility.dll": {}

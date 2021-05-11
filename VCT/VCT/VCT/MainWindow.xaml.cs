@@ -188,5 +188,9 @@ namespace VCT {
             Application.Current.Shutdown();
         }
         #endregion
+
+        public VoiceData[] GetKeywords() {
+            return voiceDataList.ToArray();
+        }
     }
 }

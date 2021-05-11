@@ -24,3 +24,16 @@ C:\Users\jasmi\source\repos\Ex-VoiceCon\VCT\VCTUtility\VCTUtility\obj\Debug\nets
 C:\Users\jasmi\source\repos\Ex-VoiceCon\VCT\VCTUtility\VCTUtility\obj\Debug\netstandard2.0\VCTUtility.csproj.CoreCompileInputs.cache
 C:\Users\jasmi\source\repos\Ex-VoiceCon\VCT\VCTUtility\VCTUtility\obj\Debug\netstandard2.0\VCTUtility.dll
 C:\Users\jasmi\source\repos\Ex-VoiceCon\VCT\VCTUtility\VCTUtility\obj\Debug\netstandard2.0\VCTUtility.pdb
+D:\Repos\Ex-VoiceCon\VCT\VCTUtility\VCTUtility\bin\Debug\netstandard2.0\libgcc_s_seh-1.dll
+D:\Repos\Ex-VoiceCon\VCT\VCTUtility\VCTUtility\bin\Debug\netstandard2.0\libstdc++-6.dll
+D:\Repos\Ex-VoiceCon\VCT\VCTUtility\VCTUtility\bin\Debug\netstandard2.0\libvosk.dll
+D:\Repos\Ex-VoiceCon\VCT\VCTUtility\VCTUtility\bin\Debug\netstandard2.0\libwinpthread-1.dll
+D:\Repos\Ex-VoiceCon\VCT\VCTUtility\VCTUtility\bin\Debug\netstandard2.0\VCTUtility.deps.json
+D:\Repos\Ex-VoiceCon\VCT\VCTUtility\VCTUtility\bin\Debug\netstandard2.0\VCTUtility.dll
+D:\Repos\Ex-VoiceCon\VCT\VCTUtility\VCTUtility\bin\Debug\netstandard2.0\VCTUtility.pdb
+D:\Repos\Ex-VoiceCon\VCT\VCTUtility\VCTUtility\obj\Debug\netstandard2.0\VCTUtility.csprojAssemblyReference.cache
+D:\Repos\Ex-VoiceCon\VCT\VCTUtility\VCTUtility\obj\Debug\netstandard2.0\VCTUtility.AssemblyInfoInputs.cache
+D:\Repos\Ex-VoiceCon\VCT\VCTUtility\VCTUtility\obj\Debug\netstandard2.0\VCTUtility.AssemblyInfo.cs
+D:\Repos\Ex-VoiceCon\VCT\VCTUtility\VCTUtility\obj\Debug\netstandard2.0\VCTUtility.csproj.CoreCompileInputs.cache
+D:\Repos\Ex-VoiceCon\VCT\VCTUtility\VCTUtility\obj\Debug\netstandard2.0\VCTUtility.dll
+D:\Repos\Ex-VoiceCon\VCT\VCTUtility\VCTUtility\obj\Debug\netstandard2.0\VCTUtility.pdb

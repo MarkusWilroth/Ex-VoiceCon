@@ -42,11 +42,16 @@ namespace VCT {
             isRecording = false;
             rec = AudioSystem.StopRecording();
 
-
             
-            engine.ValidateKeyphrase(rec, AudioSystem.GetSampleRate(), AudioSystem.GetChannels()); //return boolic value if successful then save rec to "database" 
-
-
+            engine.ValidateKeyphrase(rec, AudioSystem.GetSampleRate(), AudioSystem.GetChannels(), main.GetKeywords()); //return boolic value if successful then save rec to "database" 
+            if (true) //if validation was súccesull ^
+            {
+                SaveRecording();
+            }
+            else
+            {
+                throw new ArgumentException("Recognition failed");
+            }
         }
 
         private bool SaveRecording() {

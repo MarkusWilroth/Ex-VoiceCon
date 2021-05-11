@@ -6,7 +6,7 @@ namespace VoskEngine
 {
     class NeuralNetwork
     {
-       
+
 
         private double[] layers; //All the MFCC Coefficients
         private int[] activations;
@@ -76,10 +76,12 @@ namespace VoskEngine
         /// /Creates empty storage array for the neurons, 
         /// it creates list first due to array being static in length.
         /// </summary>
-        private void InitNeurons(double[][] coefficients) {
+        private void InitNeurons(double[][] coefficients)
+        {
             List<double[]> neuronList = new List<double[]>();
 
-            for (int i = 0; i < coefficients.GetLength(0); i++) {
+            for (int i = 0; i < coefficients.GetLength(0); i++)
+            {
                 neuronList.Add(new double[coefficients[i].GetLength(0)]);
             }
             neurons = neuronList.ToArray();
@@ -90,13 +92,14 @@ namespace VoskEngine
         /// to be populated, For a start, the biase is set to fall inbetween "(-0.5) and 0.5"
         /// This might be furhter improved with finding another way to "set the initial bias"
         /// </summary>
-        private void InitBiases(double[][] coefficients) {
+        private void InitBiases(double[][] coefficients)
+        {
             List<double[]> biasList = new List<double[]>();
             Random rnd = new Random();
 
             for (int i = 0; i < coefficients.GetLength(0); i++)
             {
-                double[] bias = new double[coefficients[i].GetLength(0)]; 
+                double[] bias = new double[coefficients[i].GetLength(0)];
                 for (int j = 0; j < layers[i]; j++)
                 {
 
@@ -175,7 +178,7 @@ namespace VoskEngine
                     if (hiddenLayerTrigger < 2)
                     {
                         //neurons[i][j] = Activation(value + biases[i][j], nextNeuronValue + biases[i+1][j],"ho");
-                        neurons[i][j] = HiddenActivation(value + biases[i][j]);
+                        neurons[i][j] = HiddenActivation(value + biases[i][j]); 
                     }
                     else
                     {
@@ -210,11 +213,12 @@ namespace VoskEngine
 
         //holds the activation function (Relu) for the hidden layer 
         /*    f(z)i=max(0,zi)    */
-        private double HiddenActivation(double sum) {
+        private double HiddenActivation(double sum)
+        {
             double result;
             result = Math.Max(0, sum) * (-1);  //-1 is to represent the imaginary result produced
 
-            return result; 
+            return result;
         }
 
         /// <summary>
@@ -228,143 +232,23 @@ namespace VoskEngine
         {
             // train using back-prop
             // back-prop specific arrays
-            double[][] hoGrads = MakeMatrix(numHidden, numOutput, 0.0); // hidden-to-output weight gradients
-            double[] obGrads = new double[numOutput];                   // output bias gradients
 
-            double[][] ihGrads = MakeMatrix(numInput, numHidden, 0.0);  // input-to-hidden weight gradients
-            double[] hbGrads = new double[numHidden];                   // hidden bias gradients
+            //numOutputs are the voicestreams saved in the validation data
+            //We need to add the first keyphrases and then save them so that they can be trained.
+            //initial hidden to output will be the same since the output layer doesnt exist
 
-            double[] oSignals = new double[numOutput];                  // local gradient output signals - gradients w/o associated input terms
-            double[] hSignals = new double[numHidden];                  // local gradient hidden node signals
-
-            // back-prop momentum specific arrays 
-            double[][] ihPrevWeightsDelta = MakeMatrix(numInput, numHidden, 0.0);
-            double[] hPrevBiasesDelta = new double[numHidden];
-            double[][] hoPrevWeightsDelta = MakeMatrix(numHidden, numOutput, 0.0);
-            double[] oPrevBiasesDelta = new double[numOutput];
-
-            int epoch = 0;
-            double[] xValues = new double[numInput]; // inputs
-            double[] tValues = new double[numOutput]; // target values
-            double derivative = 0.0;
-            double errorSignal = 0.0;
-
-            int[] sequence = new int[trainData.Length];
-            for (int i = 0; i < sequence.Length; ++i)
-                sequence[i] = i;
-
-            int errInterval = maxEpochs / 10; // interval to check error
-            while (epoch < maxEpochs)
+            foreach (var point in trainingData)
             {
-                ++epoch;
 
-                if (epoch % errInterval == 0 && epoch < maxEpochs)
-                {
-                    double trainErr = Error(trainData);
-                    Console.WriteLine("epoch = " + epoch + "  error = " +
-                      trainErr.ToString("F4"));
-                    //Console.ReadLine();
-                }
-
-                Shuffle(sequence); // visit each training data in random order
-                for (int ii = 0; ii < trainData.Length; ++ii)
-                {
-                    int idx = sequence[ii];
-                    Array.Copy(trainData[idx], xValues, numInput);
-                    Array.Copy(trainData[idx], numInput, tValues, 0, numOutput);
-                    ComputeOutputs(xValues); // copy xValues in, compute outputs 
-
-                    // indices: i = inputs, j = hiddens, k = outputs
-
-                    // 1. compute output node signals (assumes softmax)
-                    for (int k = 0; k < numOutput; ++k)
-                    {
-                        errorSignal = tValues[k] - outputs[k];  // Wikipedia uses (o-t)
-                        derivative = (1 - outputs[k]) * outputs[k]; // for softmax
-                        oSignals[k] = errorSignal * derivative;
-                    }
-
-                    // 2. compute hidden-to-output weight gradients using output signals
-                    for (int j = 0; j < numHidden; ++j)
-                        for (int k = 0; k < numOutput; ++k)
-                            hoGrads[j][k] = oSignals[k] * hOutputs[j];
-
-                    // 2b. compute output bias gradients using output signals
-                    for (int k = 0; k < numOutput; ++k)
-                        obGrads[k] = oSignals[k] * 1.0; // dummy assoc. input value
-
-                    // 3. compute hidden node signals
-                    for (int j = 0; j < numHidden; ++j)
-                    {
-                        derivative = (1 + hOutputs[j]) * (1 - hOutputs[j]); // for tanh
-                        double sum = 0.0; // need sums of output signals times hidden-to-output weights
-                        for (int k = 0; k < numOutput; ++k)
-                        {
-                            sum += oSignals[k] * hoWeights[j][k]; // represents error signal
-                        }
-                        hSignals[j] = derivative * sum;
-                    }
-
-                    // 4. compute input-hidden weight gradients
-                    for (int i = 0; i < numInput; ++i)
-                        for (int j = 0; j < numHidden; ++j)
-                            ihGrads[i][j] = hSignals[j] * inputs[i];
-
-                    // 4b. compute hidden node bias gradients
-                    for (int j = 0; j < numHidden; ++j)
-                        hbGrads[j] = hSignals[j] * 1.0; // dummy 1.0 input
-
-                    // == update weights and biases
-
-                    // update input-to-hidden weights
-                    for (int i = 0; i < numInput; ++i)
-                    {
-                        for (int j = 0; j < numHidden; ++j)
-                        {
-                            double delta = ihGrads[i][j] * learnRate;
-                            ihWeights[i][j] += delta; // would be -= if (o-t)
-                            ihWeights[i][j] += ihPrevWeightsDelta[i][j] * momentum;
-                            ihPrevWeightsDelta[i][j] = delta; // save for next time
-                        }
-                    }
-
-                    // update hidden biases
-                    for (int j = 0; j < numHidden; ++j)
-                    {
-                        double delta = hbGrads[j] * learnRate;
-                        hBiases[j] += delta;
-                        hBiases[j] += hPrevBiasesDelta[j] * momentum;
-                        hPrevBiasesDelta[j] = delta;
-                    }
-
-                    // update hidden-to-output weights
-                    for (int j = 0; j < numHidden; ++j)
-                    {
-                        for (int k = 0; k < numOutput; ++k)
-                        {
-                            double delta = hoGrads[j][k] * learnRate;
-                            hoWeights[j][k] += delta;
-                            hoWeights[j][k] += hoPrevWeightsDelta[j][k] * momentum;
-                            hoPrevWeightsDelta[j][k] = delta;
-                        }
-                    }
-
-                    // update output node biases
-                    for (int k = 0; k < numOutput; ++k)
-                    {
-                        double delta = obGrads[k] * learnRate;
-                        oBiases[k] += delta;
-                        oBiases[k] += oPrevBiasesDelta[k] * momentum;
-                        oPrevBiasesDelta[k] = delta;
-                    }
-
-                } // each training item
-
-            } // while
-            double[] bestWts = GetWeights();
-            return bestWts;
+            }
+            //double[] output = {}
         }
 
+        public void CreateInitialOutputLayer(double[] inputs, double[] expected)
+        {
+            double[] outputs = FeedForward(inputs);
 
+
+        }
     }
 }

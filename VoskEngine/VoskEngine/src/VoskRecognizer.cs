@@ -62,6 +62,7 @@ public class VoskRecognizer : global::System.IDisposable {
     return global::System.Runtime.InteropServices.Marshal.PtrToStringUTF8(VoskPINVOKE.VoskRecognizer_FinalResult(handle));
   }
 
+
 }
 
 }

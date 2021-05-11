@@ -40,12 +40,6 @@ namespace VoskEngine
         
 
 
-        int[] filterPoints = { 6,18,31,46,63,82,103,127,154,184,218,
-                              257,299,348,402,463,531,608,695,792,901,1023}; //array of anchor points for filtering the frame spectrum
-
-        
-
-
         //sampleRate - float sampes per second, must be greater than zero; not wohle-numbered values get rounded
         //windowSize - int size of window; must be 2^n and at least 32
         //numberCoefficients - int must be grate or equal to 1 and smaller than the number of filters
@@ -92,6 +86,7 @@ namespace VoskEngine
 
             melFilterBanks = GetFilterBanks();
             dctMatrix = GetDCTMatrix();
+
 
             //create power fft object
             Fourier.Forward(buffer, Window.Hann(buffer.Length), FourierOptions.NoScaling);  //FFT.FFT_NORMALIZED_POWER, windowSize, FFT.WND_HANNING
@@ -220,7 +215,7 @@ namespace VoskEngine
         /// must be a multiple of the hop size, must not be a null value</param>
         /// Hop size = number of samples between each successive FFT window
         /// <returns>double[][] an array of arrays contains a double array of Sone value
-        public double[][] Process(double[] input)
+        public double[][] Process(double[] input) //This is the Frame Blocking 
         {
             //check for null
             if (input == null)
@@ -311,9 +306,8 @@ namespace VoskEngine
         /// Returns an int which represents the window size in [samples]
         /// </summary>
         /// <returns></returns>
-        public int GetWindowSize()
-        {
-            return samples.Length; //
+        public int GetWindowSize() {
+            return windowSize; //
         }
 
         private Matrix GetDCTMatrix()

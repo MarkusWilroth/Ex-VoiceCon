@@ -108,10 +108,9 @@ namespace VoskEngine
 		/// <exception cref="ArgumentException">Matrix inner dimensions must agree.</exception>
         /// Bcolj is the column from the other matrix, Arowi is the row of this matrix
         public Matrix Times(Matrix otherMatrix) {           
-            if (otherMatrix.rowCount != columnCount)
-            {
+            if (otherMatrix.rowCount != columnCount) 
                 throw new ArgumentException("Matrix inner dimensions must agree.");
-            }
+            
 
             var X = new Matrix(rowCount, otherMatrix.columnCount);
             var C = X.GetArray();
