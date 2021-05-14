@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "ENRshsFOFq8gP8ia2tRa4PKvzPXejL82o+Hby1VxZlXOjbVbVSU1BRiXpMJO/ASwZrWlqHgr+vuRQRilG9SNNQ==",
+  "dgSpecHash": "AMlGQoUq1+taDKOt6Awl3nhfp0KSlr+vASB/6smY2svGwjh7aegfcvmCeEKuaV5VaXrKjXbRWBos9toIgArrtg==",
   "success": true,
   "projectFilePath": "D:\\Repos\\Ex-VoiceCon\\VoskEngine\\VoskEngine\\VoskEngine.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\heliu\\.nuget\\packages\\mathnet.numerics\\4.15.0\\mathnet.numerics.4.15.0.nupkg.sha512",
+    "C:\\Users\\heliu\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\heliu\\.nuget\\packages\\vosk\\0.3.21\\vosk.0.3.21.nupkg.sha512"
   ],
   "logs": []

@@ -228,27 +228,38 @@ namespace VoskEngine
         /// <param name="maxIterations"></param>
         /// <param name="learnRate"></param>
         /// <param name="momentum"></param>
-        public void TrainSet(double[][] trainingData, int maxIterations, double learnRate, double momentum)
+        public void TrainSet(double[][] trainingData, int maxIterations, double learningRate, double momentum) //maxIterations and learningRate will have to be ajusted as we start training
         {
-            // train using back-prop
-            // back-prop specific arrays
 
-            //numOutputs are the voicestreams saved in the validation data
-            //We need to add the first keyphrases and then save them so that they can be trained.
-            //initial hidden to output will be the same since the output layer doesnt exist
+            int startIndexIteration = 0;
+            double[] sequence = new double[trainingData.Length];
 
-            foreach (var point in trainingData)
+            for (int i = 0; i < sequence.Length; i++)
             {
-
+                sequence[i] = i;
             }
+
+            while (startIndexIteration < maxIterations)
+            {
+                startIndexIteration++;
+
+                //double alpha = 
+            }
+
+        }
             //double[] output = {}
-        }
+        
+        //public double GetErrorDiff(double[][] v, double[][] y) // the 
+        //{
+        //    double errorResult;
 
-        public void CreateInitialOutputLayer(double[] inputs, double[] expected)
-        {
-            double[] outputs = FeedForward(inputs);
+        //    errorResult = v - y;
+        //}
+        //public void CreateInitialOutputLayer(double[] inputs, double[] expected)
+        //{
+        //    double[] outputs = FeedForward(inputs);
 
 
-        }
+        //}
     }
 }

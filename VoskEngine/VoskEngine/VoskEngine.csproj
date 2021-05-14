@@ -7,6 +7,7 @@
 
   <ItemGroup>
     <PackageReference Include="MathNet.Numerics" Version="4.15.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Vosk" Version="0.3.21" />
   </ItemGroup>
 
@@ -27,6 +28,12 @@
 
   <ItemGroup>
     <Folder Include="model\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="VCTUtility">
+      <HintPath>..\..\VCT\VCTUtility\VCTUtility\bin\Debug\netstandard2.0\VCTUtility.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
