@@ -76,3 +76,4 @@ C:\Users\jasmi\source\repos\Ex-VoiceCon\VCT\VCT\VCT\bin\Debug\netcoreapp3.1\VCTU
 C:\Users\Flugan\Ex-VoiceCon\VCT\VCT\VCT\bin\Debug\netcoreapp3.1\MathNet.Numerics.dll
 C:\Users\Flugan\Ex-VoiceCon\VCT\VCT\VCT\bin\Debug\netcoreapp3.1\VoskEngine.dll
 C:\Users\Flugan\Ex-VoiceCon\VCT\VCT\VCT\bin\Debug\netcoreapp3.1\VoskEngine.pdb
+C:\Users\jasmi\source\repos\Ex-VoiceCon\VCT\VCT\VCT\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll

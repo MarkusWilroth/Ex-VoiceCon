@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Repos\\Ex-VoiceCon\\VoskEngine\\VoskEngine\\VoskEngine.csproj": {}
+    "C:\\Users\\jasmi\\source\\repos\\Ex-VoiceCon\\VoskEngine\\VoskEngine\\VoskEngine.csproj": {}
   },
   "projects": {
-    "D:\\Repos\\Ex-VoiceCon\\VoskEngine\\VoskEngine\\VoskEngine.csproj": {
+    "C:\\Users\\jasmi\\source\\repos\\Ex-VoiceCon\\VoskEngine\\VoskEngine\\VoskEngine.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Repos\\Ex-VoiceCon\\VoskEngine\\VoskEngine\\VoskEngine.csproj",
+        "projectUniqueName": "C:\\Users\\jasmi\\source\\repos\\Ex-VoiceCon\\VoskEngine\\VoskEngine\\VoskEngine.csproj",
         "projectName": "VoskEngine",
-        "projectPath": "D:\\Repos\\Ex-VoiceCon\\VoskEngine\\VoskEngine\\VoskEngine.csproj",
-        "packagesPath": "C:\\Users\\heliu\\.nuget\\packages\\",
-        "outputPath": "D:\\Repos\\Ex-VoiceCon\\VoskEngine\\VoskEngine\\obj\\",
+        "projectPath": "C:\\Users\\jasmi\\source\\repos\\Ex-VoiceCon\\VoskEngine\\VoskEngine\\VoskEngine.csproj",
+        "packagesPath": "C:\\Users\\jasmi\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jasmi\\source\\repos\\Ex-VoiceCon\\VoskEngine\\VoskEngine\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\heliu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\jasmi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

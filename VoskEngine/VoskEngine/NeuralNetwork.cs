@@ -1,44 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace VoskEngine
 {
     class NeuralNetwork
     {
-
-
-        private double[] layers; //All the MFCC Coefficients
-        private int[] activations;
+        private double[] layers; //All the input MFCC Coefficients POW value
+        private double[] activations; //Get these POW values from the vosk speech model
         private double[][] neurons;
         private double[][] biases;
         private double[][][] weights;
 
         public float fitness = 0;
-
-        public double ihWeight00;
-        public double ihWeight01;
-        public double ihWeight10;
-        public double ihWeight11;
-        public double ihBias0;
-        public double ihBias1;
-
-        public double ihSum0;
-        public double ihSum1;
-        public double ihResult0;
-        public double ihResult1;
-
-        public double hoWeight00;
-        public double hoWeight01;
-        public double hoWeight10;
-        public double hoWeight11;
-        public double hoBias0;
-        public double hoBias1;
-
-        public double hoSum0;
-        public double hoSum1;
-        public double hoResult0;
-        public double hoResult1;
 
 
         public NeuralNetwork(double[] _layers) //
@@ -78,13 +54,23 @@ namespace VoskEngine
         /// </summary>
         private void InitNeurons(double[][] coefficients)
         {
+            //double[][] neuronList = new double[coefficients.GetLength(0)][];
             List<double[]> neuronList = new List<double[]>();
-
-            for (int i = 0; i < coefficients.GetLength(0); i++)
+            //for (int i = 0; i < neuronList.GetLength(0); i++)
+            //{
+            //    //neuronList.Add(new double[i][]); //coefficients[i].GetLength(0)
+            //    for (int j = 0; j < neuronList[i].GetLength(0); j++)
+            //    { 
+            //        neuronList[i] = coefficients[j];
+            //    }
+            //}
+            int i = 0;
+            foreach (var layer in coefficients)
             {
-                neuronList.Add(new double[coefficients[i].GetLength(0)]);
+                neuronList.Add(layer);
             }
-            neurons = neuronList.ToArray();
+
+            neurons = neuronList.ToArray(); //convert list of double arrays into a jagged 2d double array
         }
 
         /// <summary>
@@ -99,22 +85,13 @@ namespace VoskEngine
 
             for (int i = 0; i < coefficients.GetLength(0); i++)
             {
-                double[] bias = new double[coefficients[i].GetLength(0)];
+                double[] bias = new double[coefficients[i].GetLength(1)]; // new double based on the size of the inner array
                 for (int j = 0; j < layers[i]; j++)
                 {
-
                     bias[j] = rnd.Next(-1, 1) / 2; //I want a random value inbetween "(-0.5) and 0.5" but this might need some tuneing
                 }
                 biasList.Add(bias);
             }
-
-            //for (int i = 0; i < biases.GetLength(0); i++)
-            //{
-            //    for (int j = 0; j < biases.GetLength(1); j++)
-            //    {
-            //        biases[i][j] = rnd.Next(-1, 1) / 2;
-            //    }
-            //}
 
             biases = biasList.ToArray();
         }
@@ -124,33 +101,24 @@ namespace VoskEngine
             List<double[][]> weightList = new List<double[][]>();
             Random rnd = new Random();
 
-            //for (int i = 0; i < layers.Length; i++)
-            //{
-            //    List<float[]> layerWeightsList = new List<float[]>();
-            //    int neuronsInPrevoiusLayer = layers[i - 1];
-
-            //    for (int j = 0; j < neurons[i].Length; j++)
-            //    {
-            //        float[] neuronWeights = new float[neuronsInPrevoiusLayer];
-
-            //        for (int k = 0; k < neuronsInPrevoiusLayer; k++)
-            //        {
-            //            neuronWeights[k] = rnd.Next(-1, 1) / 2; //I want a random value inbetween "(-0.5) and 0.5" but this might need some tuneing
-            //        }
-            //        layerWeightsList.Add(neuronWeights);
-            //    }
-            //    weightList.Add(layerWeightsList.ToArray());
-            //}
-
-            foreach (var coefficient in coefficients)
+            for (int i = 0; i < layers.Length; i++)
             {
-                for (int i = 0; i < coefficient.Length; i++)
+                List<double[]> layerWeightsList = new List<double[]>();
+                double neuronsInPreviousLayer = layers[i - 1];
+                int neuronInPreviousLayerIndex = i - 1;
+
+                for (int j = 0; j < neurons[i].Length; j++)
                 {
-                    coefficient[i] = rnd.Next(-1, 1) / 2;
+                    double[] neuronWeights = new double[neuronInPreviousLayerIndex];
+
+                    for (int k = 0; k < neuronsInPreviousLayer; k++)
+                    {
+                        neuronWeights[k] = rnd.Next(-1, 1) / 2; //I want a random value inbetween "(-0.5) and 0.5" but this might need some tuneing
+                    }
+                    layerWeightsList.Add(neuronWeights);
                 }
+                weightList.Add(layerWeightsList.ToArray());
             }
-            weightList.Add(coefficients);
-            weights = weightList.ToArray();
         }
 
 
@@ -170,7 +138,7 @@ namespace VoskEngine
 
                     for (int k = 0; k < neurons[i - 1].Length; k++)
                     {
-                        value += weights[i - 1][j][k] * neurons[i - 1][k]; //maybe add error probability error = (expected result) - (actual result): when trained data exists l8r
+                        value += weights[layer][j][k] * neurons[layer][k]; //maybe add error probability error = (expected result) - (actual result): when trained data exists l8r
                         nextNeuronValue += weights[i][j][k] * neurons[i][k]; //adjust weights by this formula: error * input * output * (output - 1) 
                     }
 
@@ -221,6 +189,66 @@ namespace VoskEngine
             return result;
         }
 
+
+
+
+        /// <summary>
+        /// Comparing for NN performance. 
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
+        public int CompareTo(NeuralNetwork other)
+        {
+            if (other == null)
+                return 1;
+
+            if (fitness > other.fitness)
+                return 1;
+            else if (fitness < other.fitness)
+                return -1;
+            else
+                return 0;
+        }
+
+
+        public void Load(string path) //Load the weights and biases from the known data in our NN (save-file)
+        {
+            using (StreamWriter sw = File.AppendText(path))
+            {
+                JsonSerializer serializer = new JsonSerializer();
+                serializer.Serialize(sw, path);
+
+                //
+            }
+        }
+
+
+        public void Mutate(int chance, double value)
+        {
+            Random rnd = new Random();
+           
+            for (int i = 0; i < biases.Length; i++)
+            {
+                for (int j = 0; j < biases[i].Length; j++)
+                {
+                    biases[i][j] = (rnd.Next(0, chance) <= 5) ? biases[i][j] += rnd.NextDouble() : biases[i][j];
+                }
+            }
+
+
+            for (int i = 0; i < weights.Length; i++)
+            {
+                for (int j = 0; j < weights[i].Length; j++)
+                {
+                    for (int k = 0; k < weights[i][j].Length; k++)
+                    {
+                        weights[i][j][k] = (rnd.Next(0, chance) <= 5) ? weights[i][j][k] += rnd.NextDouble() : weights[i][j][k];
+                    }
+                }
+            }
+        }
+
+
         /// <summary>
         /// Shall be usin gradient decent algorithm
         /// </summary>
@@ -231,35 +259,24 @@ namespace VoskEngine
         public void TrainSet(double[][] trainingData, int maxIterations, double learningRate, double momentum) //maxIterations and learningRate will have to be ajusted as we start training
         {
 
-            int startIndexIteration = 0;
-            double[] sequence = new double[trainingData.Length];
+            //int startIndexIteration = 0;
+            //double[] sequence = new double[trainingData.Length];
 
-            for (int i = 0; i < sequence.Length; i++)
-            {
-                sequence[i] = i;
-            }
+            //for (int i = 0; i < sequence.Length; i++)
+            //{
+            //    sequence[i] = i;
+            //}
 
-            while (startIndexIteration < maxIterations)
-            {
-                startIndexIteration++;
+            //while (startIndexIteration < maxIterations)
+            //{
+            //    startIndexIteration++;
 
-                //double alpha = 
-            }
+            //    //double alpha = 
+            //}
 
+         
         }
-            //double[] output = {}
         
-        //public double GetErrorDiff(double[][] v, double[][] y) // the 
-        //{
-        //    double errorResult;
 
-        //    errorResult = v - y;
-        //}
-        //public void CreateInitialOutputLayer(double[] inputs, double[] expected)
-        //{
-        //    double[] outputs = FeedForward(inputs);
-
-
-        //}
     }
 }

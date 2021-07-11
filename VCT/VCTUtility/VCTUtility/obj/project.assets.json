@@ -230,16 +230,6 @@
         "build": {
           "build/Vosk.targets": {}
         }
-      },
-      "VoskEngine/1.0.0": {
-        "type": "project",
-        "framework": "Unsupported,Version=v0.0",
-        "compile": {
-          "bin/placeholder/VoskEngine.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/VoskEngine.dll": {}
-        }
       }
     }
   },
@@ -786,11 +776,6 @@
         "vosk.0.3.21.nupkg.sha512",
         "vosk.nuspec"
       ]
-    },
-    "VoskEngine/1.0.0": {
-      "type": "project",
-      "path": "../../../VoskEngine/VoskEngine/VoskEngine.csproj",
-      "msbuildProject": "../../../VoskEngine/VoskEngine/VoskEngine.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -798,24 +783,28 @@
       "MathNet.Numerics >= 4.15.0",
       "NAudio >= 2.0.0",
       "NETStandard.Library >= 2.0.3",
-      "Vosk >= 0.3.21",
-      "VoskEngine >= 1.0.0"
+      "Vosk >= 0.3.21"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\heliu\\.nuget\\packages\\": {}
+    "C:\\Users\\jasmi\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Repos\\Ex-VoiceCon\\VCT\\VCTUtility\\VCTUtility\\VCTUtility.csproj",
+      "projectUniqueName": "C:\\Users\\jasmi\\source\\repos\\Ex-VoiceCon\\VCT\\VCTUtility\\VCTUtility\\VCTUtility.csproj",
       "projectName": "VCTUtility",
-      "projectPath": "D:\\Repos\\Ex-VoiceCon\\VCT\\VCTUtility\\VCTUtility\\VCTUtility.csproj",
-      "packagesPath": "C:\\Users\\heliu\\.nuget\\packages\\",
-      "outputPath": "D:\\Repos\\Ex-VoiceCon\\VCT\\VCTUtility\\VCTUtility\\obj\\",
+      "projectPath": "C:\\Users\\jasmi\\source\\repos\\Ex-VoiceCon\\VCT\\VCTUtility\\VCTUtility\\VCTUtility.csproj",
+      "packagesPath": "C:\\Users\\jasmi\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\jasmi\\source\\repos\\Ex-VoiceCon\\VCT\\VCTUtility\\VCTUtility\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\heliu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\jasmi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -828,11 +817,7 @@
       "frameworks": {
         "netstandard2.0": {
           "targetAlias": "netstandard2.0",
-          "projectReferences": {
-            "D:\\Repos\\Ex-VoiceCon\\VoskEngine\\VoskEngine\\VoskEngine.csproj": {
-              "projectPath": "D:\\Repos\\Ex-VoiceCon\\VoskEngine\\VoskEngine\\VoskEngine.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {
@@ -885,15 +870,6 @@
       "warningLevel": 1,
       "message": "Package 'NAudio.WinForms 2.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETStandard,Version=v2.0'. This package may not be fully compatible with your project.",
       "libraryId": "NAudio.WinForms",
-      "targetGraphs": [
-        ".NETStandard,Version=v2.0"
-      ]
-    },
-    {
-      "code": "NU1201",
-      "level": "Error",
-      "message": "Project VoskEngine is not compatible with netstandard2.0 (.NETStandard,Version=v2.0). Project VoskEngine supports: netcoreapp3.1 (.NETCoreApp,Version=v3.1)",
-      "libraryId": "VoskEngine",
       "targetGraphs": [
         ".NETStandard,Version=v2.0"
       ]

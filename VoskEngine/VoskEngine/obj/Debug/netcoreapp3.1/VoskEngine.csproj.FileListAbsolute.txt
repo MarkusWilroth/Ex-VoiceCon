@@ -43,3 +43,6 @@ D:\Repos\Ex-VoiceCon\VoskEngine\VoskEngine\obj\Debug\netcoreapp3.1\VoskEngine.As
 D:\Repos\Ex-VoiceCon\VoskEngine\VoskEngine\obj\Debug\netcoreapp3.1\VoskEngine.csproj.CoreCompileInputs.cache
 D:\Repos\Ex-VoiceCon\VoskEngine\VoskEngine\obj\Debug\netcoreapp3.1\VoskEngine.dll
 D:\Repos\Ex-VoiceCon\VoskEngine\VoskEngine\obj\Debug\netcoreapp3.1\VoskEngine.pdb
+C:\Users\jasmi\source\repos\Ex-VoiceCon\VoskEngine\VoskEngine\bin\Debug\netcoreapp3.1\VCTUtility.dll
+C:\Users\jasmi\source\repos\Ex-VoiceCon\VoskEngine\VoskEngine\bin\Debug\netcoreapp3.1\VCTUtility.pdb
+C:\Users\jasmi\source\repos\Ex-VoiceCon\VoskEngine\VoskEngine\obj\Debug\netcoreapp3.1\VoskEngine.csproj.CopyComplete

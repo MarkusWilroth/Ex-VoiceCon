@@ -39,12 +39,15 @@ namespace VCT {
         }
 
         private void StopRecording() {
+
+            bool kwResult;
+
             isRecording = false;
             rec = AudioSystem.StopRecording();
 
             
-            engine.ValidateKeyphrase(rec, AudioSystem.GetSampleRate(), AudioSystem.GetChannels(), main.GetKeywords()); //return boolic value if successful then save rec to "database" 
-            if (true) //if validation was súccesull ^
+            kwResult = engine.ValidateKeyphrase(rec, TbText.Text,AudioSystem.GetSampleRate(), AudioSystem.GetChannels(), main.GetKeywords()); //return boolic value if successful then save rec to "database" 
+            if (kwResult == true) //if validation was súccesull ^
             {
                 SaveRecording();
             }

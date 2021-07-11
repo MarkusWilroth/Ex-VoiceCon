@@ -9,7 +9,9 @@
       "VoskEngine/1.0.0": {
         "dependencies": {
           "MathNet.Numerics": "4.15.0",
-          "Vosk": "0.3.21"
+          "Newtonsoft.Json": "13.0.1",
+          "Vosk": "0.3.21",
+          "VCTUtility": "1.0.0.0"
         },
         "runtime": {
           "VoskEngine.dll": {}
@@ -23,11 +25,27 @@
           }
         }
       },
+      "Newtonsoft.Json/13.0.1": {
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {
+            "assemblyVersion": "13.0.0.0",
+            "fileVersion": "13.0.1.25517"
+          }
+        }
+      },
       "Vosk/0.3.21": {
         "runtime": {
           "lib/netstandard2.0/Vosk.dll": {
             "assemblyVersion": "0.0.0.0",
             "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "VCTUtility/1.0.0.0": {
+        "runtime": {
+          "VCTUtility.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
           }
         }
       }
@@ -46,12 +64,24 @@
       "path": "mathnet.numerics/4.15.0",
       "hashPath": "mathnet.numerics.4.15.0.nupkg.sha512"
     },
+    "Newtonsoft.Json/13.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ppPFpBcvxdsfUonNcvITKqLl3bqxWbDCZIzDWHzjpdAHRFfZe0Dw9HmA0+za13IdyrgJwpkDTDA9fHaxOrt20A==",
+      "path": "newtonsoft.json/13.0.1",
+      "hashPath": "newtonsoft.json.13.0.1.nupkg.sha512"
+    },
     "Vosk/0.3.21": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-JyUlcHiKrR6GG9SlsDcgkrHMlJ4lULw6LcLJnr/oPAXIKdFFlR57fWIA1CD+zpMUzLbuq0TCg9ZgOSubARAWrQ==",
       "path": "vosk/0.3.21",
       "hashPath": "vosk.0.3.21.nupkg.sha512"
+    },
+    "VCTUtility/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

@@ -268,7 +268,7 @@ namespace VoskEngine
             //number of unique coefficients, and the rest are symmetrically redundant
             int fftSize = (windowSize / 2) + 1;
 
-            //check start
+            //ceck start
             if (start < 0)
                 throw new Exception("start must be a positive value");
 

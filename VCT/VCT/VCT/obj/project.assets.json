@@ -134,6 +134,15 @@
           "lib/netstandard2.0/NAudio.WinMM.dll": {}
         }
       },
+      "Newtonsoft.Json/13.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        }
+      },
       "System.Security.AccessControl/4.7.0": {
         "type": "package",
         "dependencies": {
@@ -189,6 +198,7 @@
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
           "MathNet.Numerics": "4.15.0",
+          "Newtonsoft.Json": "13.0.1",
           "Vosk": "0.3.21"
         },
         "compile": {
@@ -381,6 +391,33 @@
         "naudio.winmm.nuspec"
       ]
     },
+    "Newtonsoft.Json/13.0.1": {
+      "sha512": "ppPFpBcvxdsfUonNcvITKqLl3bqxWbDCZIzDWHzjpdAHRFfZe0Dw9HmA0+za13IdyrgJwpkDTDA9fHaxOrt20A==",
+      "type": "package",
+      "path": "newtonsoft.json/13.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.xml",
+        "lib/netstandard1.0/Newtonsoft.Json.dll",
+        "lib/netstandard1.0/Newtonsoft.Json.xml",
+        "lib/netstandard1.3/Newtonsoft.Json.dll",
+        "lib/netstandard1.3/Newtonsoft.Json.xml",
+        "lib/netstandard2.0/Newtonsoft.Json.dll",
+        "lib/netstandard2.0/Newtonsoft.Json.xml",
+        "newtonsoft.json.13.0.1.nupkg.sha512",
+        "newtonsoft.json.nuspec",
+        "packageIcon.png"
+      ]
+    },
     "System.Security.AccessControl/4.7.0": {
       "sha512": "JECvTt5aFF3WT3gHpfofL2MNNP6v84sxtXxpqhLBCcDRzqsPBmHhQ6shv4DwwN2tRlzsUxtb3G9M3763rbXKDg==",
       "type": "package",
@@ -514,19 +551,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\heliu\\.nuget\\packages\\": {}
+    "C:\\Users\\jasmi\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Repos\\Ex-VoiceCon\\VCT\\VCT\\VCT\\VCT.csproj",
+      "projectUniqueName": "C:\\Users\\jasmi\\source\\repos\\Ex-VoiceCon\\VCT\\VCT\\VCT\\VCT.csproj",
       "projectName": "VCT",
-      "projectPath": "D:\\Repos\\Ex-VoiceCon\\VCT\\VCT\\VCT\\VCT.csproj",
-      "packagesPath": "C:\\Users\\heliu\\.nuget\\packages\\",
-      "outputPath": "D:\\Repos\\Ex-VoiceCon\\VCT\\VCT\\VCT\\obj\\",
+      "projectPath": "C:\\Users\\jasmi\\source\\repos\\Ex-VoiceCon\\VCT\\VCT\\VCT\\VCT.csproj",
+      "packagesPath": "C:\\Users\\jasmi\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\jasmi\\source\\repos\\Ex-VoiceCon\\VCT\\VCT\\VCT\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\heliu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\jasmi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -540,8 +582,8 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "D:\\Repos\\Ex-VoiceCon\\VoskEngine\\VoskEngine\\VoskEngine.csproj": {
-              "projectPath": "D:\\Repos\\Ex-VoiceCon\\VoskEngine\\VoskEngine\\VoskEngine.csproj"
+            "C:\\Users\\jasmi\\source\\repos\\Ex-VoiceCon\\VoskEngine\\VoskEngine\\VoskEngine.csproj": {
+              "projectPath": "C:\\Users\\jasmi\\source\\repos\\Ex-VoiceCon\\VoskEngine\\VoskEngine\\VoskEngine.csproj"
             }
           }
         }
